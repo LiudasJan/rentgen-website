@@ -1,1 +1,258 @@
-<a href="https://github.com/LiudasJan/Rentgen/releases">Download</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rentgen – Secure Local API Testing Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
+  <link rel="canonical" href="https://rentgen.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="assets/rentgen-logo.png" alt="Rentgen logo" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="#features">Features</a>
+        <a href="#security">Security</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#cases">Case studies</a>
+        <a href="#github">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Secure API testing that never leaves your machine.</h1>
+          <p class="hero-subtitle">
+            Rentgen is a local-only API hygiene scanner. No accounts. No tracking. 
+            No logging. Just brutal backend tests that stay where they belong – on your laptop.
+          </p>
+          <div class="hero-badges">
+            <span class="badge">No cloud</span>
+            <span class="badge">No telemetry</span>
+            <span class="badge">No vendor lock-in</span>
+          </div>
+          <div class="hero-cta">
+            <a href="https://github.com/LiudasJan/Rentgen/releases" class="btn btn-primary">Download Rentgen</a>
+            <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">View on GitHub</a>
+          </div>
+          <p class="hero-footnote">
+            Tested against real production APIs – including ChatGPT’s own API, where Rentgen helped uncover serious bugs that were fixed immediately.
+          </p>
+        </div>
+
+        <!-- Placeholder for animated GIF / demo -->
+        <aside class="hero-media">
+        <div class="media-frame">
+            <div class="media-label">Live demo preview</div>
+            <div class="media-placeholder">
+        <!--  Neveikia per visa page img rodo    <img src="assets/rentgen-demo.gif" alt="Rentgen demo" class="media-gif" />  -->
+            </div>
+        </div>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>See what your API is really doing.</h2>
+          <p>
+            Rentgen doesn’t just send requests – it stress-tests your assumptions. From trimming and validation to boundary and enum tests,
+            everything is generated from a single cURL.
+          </p>
+        </header>
+
+        <div class="grid features-grid">
+          <article class="card">
+            <h3>Single cURL in, hundreds of tests out</h3>
+            <p>
+              Paste a cURL and let Rentgen expand it into a full test suite: trims, invalid values, boundary conditions, enum variations
+              and more. Perfect for catching the “this will never happen” bugs.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>API hygiene scanner</h3>
+            <p>
+              Rentgen checks how your API handles unexpected input: leading/trailing spaces, wrong casing, malformed payloads, missing fields.
+              It doesn’t assume the happy path – it tries to break it.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Works offline, by design</h3>
+            <p>
+              No cloud backend, no SaaS layer, no hidden HTTP calls. Rentgen runs as a desktop app on your machine.
+              Perfect for regulated environments and sensitive APIs.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Battle-tested on real APIs</h3>
+            <p>
+              We pointed Rentgen at ChatGPT’s API and found real issues in production.
+              OpenAI fixed them immediately – that’s the level of depth Rentgen brings to your own APIs.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security / Privacy -->
+    <section id="security" class="section section-accent">
+      <div class="container security-grid">
+        <div>
+          <header class="section-header">
+            <h2>Security & privacy first. Not as a feature – as a constraint.</h2>
+          </header>
+          <ul class="checklist">
+            <li><span>🔒</span><strong>No accounts.</strong> Install and use. No sign-up, no onboarding flow, no user database.</li>
+            <li><span>🕵️‍♂️</span><strong>No tracking.</strong> No analytics, no telemetry, no “usage metrics”. We don’t need your API data to improve the product.</li>
+            <li><span>🗑</span><strong>No logging.</strong> Requests and responses stay on your machine. Rentgen doesn’t upload or store them anywhere.</li>
+            <li><span>🏢</span><strong>Safe for regulated environments.</strong> Works completely offline – ideal for banking, government, defence and internal APIs.</li>
+          </ul>
+        </div>
+        <div class="security-card">
+          <h3>Use Rentgen where cloud tools are forbidden.</h3>
+          <p>
+            If your security team blocks Postman sync, forbids SaaS API tools or bans external AI,
+            Rentgen still works. Everything runs locally – security officers can read the code and sleep at night.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Downloads -->
+    <section id="downloads" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Download Rentgen</h2>
+          <p>Native desktop builds for your OS. No installers that phone home – just the app.</p>
+        </header>
+
+        <div class="grid download-grid">
+          <div class="download-card">
+            <h3>macOS</h3>
+         
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for macOS</a>
+            <p class="download-meta">Apple Silicon & Intel · .dmg / .zip</p>
+          </div>
+          <div class="download-card">
+            <h3>Windows</h3>
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for Windows</a>
+            <p class="download-meta">Windows 10+ · .exe / .zip</p>
+          </div>
+          <div class="download-card">
+            <h3>Linux</h3>
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for Linux</a>
+            <p class="download-meta">AppImage / tar.gz</p>
+          </div>
+        </div>
+
+        <p class="downloads-footnote">
+          All binaries are built from the open GitHub repository. Verify signatures, diff releases, and review the code anytime.
+        </p>
+      </div>
+    </section>
+
+    <!-- Case studies -->
+    <section id="cases" class="section section-alt">
+      <div class="container">
+        <header class="section-header">
+          <h2>Case studies & API stories</h2>
+          <p>
+            Real APIs. Real bugs. Real fixes. We’re gradually publishing how Rentgen behaves against popular APIs and internal systems.
+          </p>
+        </header>
+
+        <div class="case-list">
+          <article class="case-card">
+            <h3>ChatGPT API – breaking the magic box</h3>
+            <p>
+              We pointed Rentgen at ChatGPT’s API and found issues we genuinely didn’t expect to see in production.
+              The best part? They were fixed immediately after we reported them.
+            </p>
+         
+            <a href="https://www.linkedin.com/pulse/i-tested-chatgpts-backend-api-using-rentgen-found-more-jankauskas-ixsnf" class="case-link" target="_blank" rel="noopener noreferrer">
+              Read the case study on LinkedIn →
+            </a>
+          </article>
+
+          <article class="case-card case-card-placeholder">
+            <h3>Next case study coming soon</h3>
+            <p>
+              We’re continuously testing Rentgen against real-world APIs: banking, marketing platforms, internal tools.
+              New write-ups will appear here as they’re ready.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub / Open source -->
+    <section id="github" class="section">
+      <div class="container github-grid">
+        <div>
+          <header class="section-header">
+            <h2>Open source core. Transparent by design.</h2>
+          </header>
+          <p>
+            Rentgen’s core is open – so your security team, developers and QA engineers can review exactly how requests are generated
+            and what leaves your machine. No hidden agents, no mystery binaries.
+          </p>
+          <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">Open Rentgen on GitHub</a>
+        </div>
+        <div class="github-meta">
+          <ul>
+            <li>✅ API hygiene scanner focused on input validation</li>
+            <li>✅ Generates tests from a single cURL</li>
+            <li>✅ Built by a QA lead, not just another “dev toy”</li>
+            <li>✅ Designed for teams that actually care about quality</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen. All rights reserved.</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
