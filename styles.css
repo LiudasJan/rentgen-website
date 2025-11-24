@@ -300,7 +300,6 @@ body {
 
 .media-placeholder {
   border-radius: 20px;
-  min-height: 220px;
   border: 1px dashed rgba(148, 163, 184, 0.7);
   display: flex;
   align-items: center;
@@ -312,11 +311,9 @@ body {
   padding: 1rem;
 }
 
-.media-placeholder code {
-  background: rgba(15, 23, 42, 0.9);
-  padding: 0.1rem 0.35rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
+.media-placeholder img {
+  max-width: 100%;
+  border-radius: 16px;
 }
 
 /* Cards / grids */
@@ -384,7 +381,12 @@ body {
 
 .security-card {
   border-radius: var(--radius-xl);
-  background: radial-gradient(circle at top, #020617 0, #020617 40%, #111827 100%);
+  background: radial-gradient(
+    circle at top,
+    #020617 0,
+    #020617 40%,
+    #111827 100%
+  );
   border: 1px solid rgba(148, 163, 184, 0.4);
   padding: 1.6rem 1.5rem;
   box-shadow: var(--shadow-soft);
@@ -511,6 +513,10 @@ body {
     order: -1;
     justify-content: flex-start;
   }
+
+  .media-frame {
+    max-width: none;
+  }
 }
 
 @media (max-width: 720px) {
@@ -565,35 +571,8 @@ body {
     border-bottom-color: rgba(148, 163, 184, 0.3);
   }
 
-.hero-media img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-  display: block;
-}
-.media-placeholder {
-  overflow: hidden;
-}
-
-/* GIF ribojimas rėmelyje */
-.media-placeholder img,
-.media-gif {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px; /* kad gražiai su rėmeliu sutaptų */
-}
-
-.hero-media {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.media-frame {
-  width: 100%;
-  max-width: 420px; /* rėmelio max plotis – čia visa magija */
-}
-
-
-
+  .hero-media {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
