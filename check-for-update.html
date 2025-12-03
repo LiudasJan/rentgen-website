@@ -156,13 +156,14 @@
     }
 
     function renderUpdateState() {
-      const current = getQueryParam("current_version");
+      const rawCurrent = getQueryParam("current_version");
       const card = document.getElementById("update-card");
+      const versionPattern = /^\d+\.\d+\.\d+$/; // pvz. 1.4.0, 3.3.3
 
       if (!card) return;
 
-      // User atsidarė tiesiogiai be parametro
-      if (!current) {
+  
+      if (!rawCurrent || !versionPattern.test(rawCurrent)) {
         card.innerHTML = `
           <h3 class="update-title">No version provided.</h3>
           <p class="update-text">
@@ -179,6 +180,7 @@
         return;
       }
 
+      const current = rawCurrent;
       const isLatest = current === LATEST_VERSION;
 
       if (isLatest) {
