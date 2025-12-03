@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rentgen – Check for Update</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Check if your Rentgen build is up to date. No telemetry, no background pings – you opened this page yourself."
+  />
+  <link rel="canonical" href="https://rentgen.io/check-for-update.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="assets/rentgen-logo.png" />
+
+  <meta property="og:title" content="Rentgen – Check for Update" />
+  <meta
+    property="og:description"
+    content="Check if your Rentgen build is up to date. No telemetry, no background pings."
+  />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/check-for-update.html" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Check for Update" />
+  <meta
+    name="twitter:description"
+    content="Local-only update check for Rentgen. You clicked, not the tool."
+  />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .update-wrapper {
+      padding: 4rem 0;
+    }
+
+    .update-card {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .update-title {
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      font-size: 1.4rem;
+    }
+
+    .update-text {
+      margin: 0 0 1rem;
+      color: var(--fg-muted);
+      font-size: 0.96rem;
+      line-height: 1.7;
+    }
+
+    .version-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .version-pill {
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--fg-muted);
+      font-family: var(--font-sans);
+    }
+
+    .version-pill strong {
+      color: var(--fg);
+    }
+
+    .update-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+
+    .update-note {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--fg-muted);
+      opacity: 0.9;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="assets/rentgen-logo.png" alt="Rentgen logo" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section update-wrapper">
+      <div class="container">
+        <header class="section-header" style="text-align:left; margin-bottom:1.5rem;">
+          <h2>Check if your Rentgen is up to date.</h2>
+          <p>
+            No telemetry. No silent calls. You clicked a button in the app, your browser opened this page,
+            and that’s the whole “update system”.
+          </p>
+        </header>
+
+        <div id="update-card" class="card update-card">
+          <!-- JS will inject content here -->
+          <p class="update-text">Checking version…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen. All rights reserved.</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // CHANGE THIS ON EVERY RELEASE
+    const LATEST_VERSION = "1.4.0";
+
+    function getQueryParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    function renderUpdateState() {
+      const current = getQueryParam("current_version");
+      const card = document.getElementById("update-card");
+
+      if (!card) return;
+
+      // User atsidarė tiesiogiai be parametro
+      if (!current) {
+        card.innerHTML = `
+          <h3 class="update-title">No version provided.</h3>
+          <p class="update-text">
+            If you opened this page manually in your browser – that’s fine.
+            To actually check for updates, use the <code>Check for update</code> button inside Rentgen.
+          </p>
+          <div class="update-actions">
+            <a href="https://rentgen.io/" class="btn btn-ghost">Back to Rentgen homepage</a>
+          </div>
+          <p class="update-note">
+            Still no tracking. Still no magic. Just a dumb page comparing two strings.
+          </p>
+        `;
+        return;
+      }
+
+      const isLatest = current === LATEST_VERSION;
+
+      if (isLatest) {
+        card.innerHTML = `
+          <h3 class="update-title">You’re up to date.</h3>
+          <p class="update-text">
+            Your Rentgen build matches the latest release.
+          </p>
+          <div class="version-row">
+            <span class="version-pill"><strong>Your version:</strong> v${current}</span>
+            <span class="version-pill"><strong>Latest version:</strong> v${LATEST_VERSION}</span>
+          </div>
+          <div class="update-actions">
+            <a href="https://rentgen.io/" class="btn btn-primary">Back to testing</a>
+          </div>
+          <p class="update-note">
+            No auto-updates, no background jobs, no telemetry. 
+            If something breaks, it’s because you tested too aggressively – which is exactly the point.
+          </p>
+        `;
+      } else {
+        card.innerHTML = `
+          <h3 class="update-title">There’s a newer Rentgen build available.</h3>
+          <p class="update-text">
+            You’re running an older version of Rentgen. If you want the latest fixes and new tests,
+            grab the newest release from GitHub.
+          </p>
+          <div class="version-row">
+            <span class="version-pill"><strong>Your version:</strong> v${current}</span>
+            <span class="version-pill"><strong>Latest version:</strong> v${LATEST_VERSION}</span>
+          </div>
+          <div class="update-actions">
+            <a href="https://github.com/LiudasJan/Rentgen/releases/latest" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Open latest releases on GitHub
+            </a>
+            <a href="https://rentgen.io/" class="btn btn-ghost">
+              Back to Rentgen homepage
+            </a>
+          </div>
+          <p class="update-note">
+            This page still knows nothing about your API, your data, or your system. 
+            It only sees whatever version string Rentgen passed in the URL.
+          </p>
+        `;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", renderUpdateState);
+  </script>
+</body>
+</html>
