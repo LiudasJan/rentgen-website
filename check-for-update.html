@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <title>Rentgen – Check for Update</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Check if your Rentgen build is up to date. No telemetry, no background pings – you opened this page yourself."
-  />
+  <meta name="description"
+    content="Check if your Rentgen build is up to date. No telemetry, no background pings – you opened this page yourself." />
   <link rel="canonical" href="https://rentgen.io/check-for-update.html" />
 
   <!-- Favicon -->
@@ -16,20 +15,15 @@
   <link rel="apple-touch-icon" href="assets/rentgen-logo.png" />
 
   <meta property="og:title" content="Rentgen – Check for Update" />
-  <meta
-    property="og:description"
-    content="Check if your Rentgen build is up to date. No telemetry, no background pings."
-  />
+  <meta property="og:description"
+    content="Check if your Rentgen build is up to date. No telemetry, no background pings." />
   <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
   <meta property="og:url" content="https://rentgen.io/check-for-update.html" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Rentgen – Check for Update" />
-  <meta
-    name="twitter:description"
-    content="Local-only update check for Rentgen. You clicked, not the tool."
-  />
+  <meta name="twitter:description" content="Local-only update check for Rentgen. You clicked, not the tool." />
   <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
 
   <link rel="stylesheet" href="styles.css" />
@@ -162,7 +156,7 @@
 
       if (!card) return;
 
-  
+
       if (!rawCurrent || !versionPattern.test(rawCurrent)) {
         card.innerHTML = `
           <h3 class="update-title">No version provided.</h3>
@@ -231,4 +225,5 @@
     document.addEventListener("DOMContentLoaded", renderUpdateState);
   </script>
 </body>
+
 </html>
