@@ -57,3 +57,28 @@ document.addEventListener("DOMContentLoaded", () => {
     onScroll();
   }
 });
+
+const demoGif = document.getElementById("demoGif");
+const gifModal = document.getElementById("gifModal");
+const gifModalImage = document.getElementById("gifModalImage");
+const gifClose = document.querySelector(".gif-close");
+
+if (demoGif && gifModal) {
+  demoGif.style.cursor = "pointer";
+
+  demoGif.addEventListener("click", () => {
+    gifModal.style.display = "block";
+    gifModalImage.src = demoGif.src;
+  });
+
+  gifClose.addEventListener("click", () => {
+    gifModal.style.display = "none";
+  });
+
+  gifModal.addEventListener("click", (e) => {
+    if (e.target === gifModal) {
+      gifModal.style.display = "none";
+    }
+  });
+}
+

@@ -78,13 +78,21 @@
 
         <!-- Placeholder for animated GIF / demo -->
         <aside class="hero-media">
-          <div class="media-frame">
-            <div class="media-label">Live demo preview</div>
-            <div class="media-placeholder">
-              <img src="assets/rentgen-demo.gif" alt="Rentgen demo" />
-            </div>
+        <div class="media-frame">
+          <div class="media-label">Live demo preview</div>
+
+          <!-- Preview GIF vietoje kortelės -->
+          <div class="media-placeholder">
+            <img src="assets/rentgen-demo.gif" alt="Rentgen demo" id="demoGif" />
           </div>
-        </aside>
+        </div>
+      </aside>
+
+      <!-- FULLSCREEN MODAL – DEDAM PO HERO, NE VIDUJ media-frame -->
+      <div id="gifModal" class="gif-modal">
+        <span class="gif-close">&times;</span>
+        <img class="gif-modal-content" id="gifModalImage" />
+      </div>
       </div>
     </section>
 

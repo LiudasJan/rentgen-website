@@ -14,6 +14,7 @@
     "Inter", "Segoe UI", sans-serif;
 }
 
+/* Reset */
 *,
 *::before,
 *::after {
@@ -25,6 +26,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Layout */
 
 main {
   flex: auto;
@@ -40,8 +43,6 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-
-/* Layout */
 
 .container {
   width: 100%;
@@ -280,7 +281,7 @@ body {
   border-color: var(--accent);
 }
 
-/* Hero media */
+/* Hero media (preview GIF) */
 
 .hero-media {
   display: flex;
@@ -321,6 +322,65 @@ body {
 .media-placeholder img {
   max-width: 100%;
   border-radius: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s ease-out, transform 0.15s ease-out;
+}
+
+.media-placeholder img:hover {
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
+/* FULLSCREEN GIF MODAL (iškeltas iš media queries) */
+
+.gif-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.gif-modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  animation: zoomIn 0.25s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.gif-close {
+  position: fixed;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 38px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.gif-close:hover {
+  color: var(--accent);
 }
 
 /* Cards / grids */
@@ -388,12 +448,7 @@ body {
 
 .security-card {
   border-radius: var(--radius-xl);
-  background: radial-gradient(
-    circle at top,
-    #020617 0,
-    #020617 40%,
-    #111827 100%
-  );
+  background: radial-gradient(circle at top, #020617 0, #020617 40%, #111827 100%);
   border: 1px solid rgba(148, 163, 184, 0.4);
   padding: 1.6rem 1.5rem;
   box-shadow: var(--shadow-soft);
@@ -576,10 +631,5 @@ body {
   .site-header.is-scrolled {
     background: rgba(15, 23, 42, 0.95);
     border-bottom-color: rgba(148, 163, 184, 0.3);
-  }
-
-  .hero-media {
-    display: flex;
-    justify-content: flex-end;
   }
 }
