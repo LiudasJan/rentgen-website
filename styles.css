@@ -632,4 +632,47 @@ body {
     background: rgba(15, 23, 42, 0.95);
     border-bottom-color: rgba(148, 163, 184, 0.3);
   }
+
+  /* Articles */
+  .story-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .story-card {
+    border-radius: var(--radius-lg);
+    background: rgba(15, 23, 42, 0.88);
+    border: 1px solid rgba(148,163,184,0.35);
+    padding: 1.5rem;
+  }
+
+  .article {
+    max-width: 760px;
+  }
+
+  .article-header {
+    margin-bottom: 2rem;
+  }
+
+  .article-meta {
+    color: var(--fg-muted);
+    font-size: 0.85rem;
+  }
+
+  .article-content h2 {
+    margin-top: 2.2rem;
+  }
+
+  .article-content img {
+    max-width: 100%;
+    border-radius: 14px;
+    margin: 1.2rem 0;
+  }
+
+  .article-content figcaption {
+    font-size: 0.8rem;
+    color: var(--fg-muted);
+    text-align: center;
+  }
+
 }
