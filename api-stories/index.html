@@ -77,6 +77,18 @@
         </article>
 
         <article class="story-card">
+          <h3>OPTIONS Method Handling — when your API rejects capability discovery</h3>
+          <p>
+            <code>OPTIONS</code> isn’t “extra”. It’s how clients and browsers ask what an endpoint allows.
+            If your API answers a valid <code>OPTIONS</code> request with <code>400 Bad Request</code>,
+            you risk broken CORS preflights, confusing client behavior, and a REST API that doesn’t speak HTTP properly.
+          </p>
+          <a href="./options-method-handling.html" class="case-link">
+            Read story →
+          </a>
+        </article>
+
+        <article class="story-card">
           <h3>Cache-Control for Private API — preventing “ghost data” in caches</h3>
           <p>
             HTTPS doesn’t stop browsers, proxies, or devices from caching responses.
