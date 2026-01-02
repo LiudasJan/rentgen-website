@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
     content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
-  <link rel="canonical" href="https://rentgen.io/" />
+  <link rel="canonical" href="https://rentgen.io/api-stories/index.html" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
@@ -75,6 +75,20 @@
             Read story →
           </a>
         </article>
+
+        <article class="story-card">
+          <h3>Unsupported HTTP Method Handling — when debugging starts with a lie</h3>
+          <p>
+            Returning <code>200 OK</code> for an unsupported HTTP method breaks trust.
+            Instead of a clear signal like <code>405 Method Not Allowed</code>,
+            clients get silence — and engineers waste time debugging payloads
+            when the real problem is simply the wrong method.
+          </p>
+          <a href="./unsupported-http-method-handling.html" class="case-link">
+            Read story →
+          </a>
+        </article>
+
 
         <article class="story-card">
           <h3>OPTIONS Method Handling — when your API rejects capability discovery</h3>
