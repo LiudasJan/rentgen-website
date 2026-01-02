@@ -77,6 +77,19 @@
         </article>
 
         <article class="story-card">
+          <h3>Missing Authorization Handling — when your API sends you in the wrong direction</h3>
+          <p>
+            When authentication is missing, the only honest response is <code>401 Unauthorized</code>.
+            Returning <code>403 Forbidden</code> or <code>400 Bad Request</code> misleads clients,
+            turns simple mistakes into long debugging sessions,
+            and makes developers question everything except the real problem
+          </p>
+          <a href="./missing-authorization-handling.html" class="case-link">
+            Read story →
+          </a>
+        </article>
+
+        <article class="story-card">
           <h3>Unsupported HTTP Method Handling — when debugging starts with a lie</h3>
           <p>
             Returning <code>200 OK</code> for an unsupported HTTP method breaks trust.
