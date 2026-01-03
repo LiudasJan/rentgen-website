@@ -77,6 +77,19 @@
         </article>
 
         <article class="story-card">
+          <h3>Large Payload Handling — when <code>400</code> quietly enables denial of service</h3>
+          <p>
+            Oversized requests should be rejected immediately.
+            If your API responds with <code>400 Bad Request</code> instead of a clear
+            <code>413 Payload Too Large</code>, it may already be parsing and allocating
+            resources — opening the door to trivial DoS attacks.
+          </p>
+          <a href="./large-payload-handling.html" class="case-link">
+            Read story →
+          </a>
+        </article>
+
+        <article class="story-card">
           <h3>Uppercase Path Handling — when <code>/V1</code> wastes half your day</h3>
           <p>
             URL paths are usually case-sensitive.
