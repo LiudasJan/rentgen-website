@@ -91,6 +91,18 @@
         </article>
 
         <article class="story-card">
+          <h3>Trimming Test — when one invisible space creates two “unique” records</h3>
+          <p>
+            Trimming is a small check that causes big integration failures when ignored.
+            Rentgen detects whether your API normalizes string input or silently accepts
+            leading and trailing whitespace that later breaks uniqueness and client assumptions.
+          </p>
+          <a href="./trimming-test.html" class="case-link">
+            Read story →
+          </a>
+        </article>
+
+        <article class="story-card">
           <h3>Built-in Load Test — when a little concurrency already bends your API</h3>
           <p>
             Rentgen includes a lightweight load test built directly into API testing.
