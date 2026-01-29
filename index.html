@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Rentgen – Secure Local API Testing Tool</title>
+  <title>Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
     content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
@@ -15,14 +15,14 @@
   <link rel="apple-touch-icon" href="assets/rentgen-logo.png" />
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
   <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
   <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
   <meta property="og:url" content="https://rentgen.io/" />
   <meta property="og:type" content="website" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
   <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
   <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
 
@@ -110,7 +110,87 @@
           </p>
         </header>
 
-        <div class="grid features-grid">
+        <!-- Rentgen placement / lifecycle -->
+        <div class="rentgen-flow reveal">
+          <div class="flow-head">
+            <h3>Where Rentgen fits (it replaces nothing)</h3>
+            <p>
+              Developers usually do a quick manual “does it return 200?” check. Rentgen turns that moment into
+              real coverage — before automation, CI/CD, and release gates.
+            </p>
+          </div>
+
+          <ol class="flow-steps" aria-label="API delivery workflow">
+            <li class="flow-step">
+              <div class="step-badge">1</div>
+              <div class="step-body">
+                <div class="step-title">Build / change an endpoint</div>
+                <div class="step-desc">You just shipped code. No integration tests yet. No confidence yet.</div>
+                <div class="step-meta">dev branch · local env</div>
+              </div>
+            </li>
+
+            <li class="flow-step flow-step--rentgen">
+              <div class="step-badge">2</div>
+              <div class="step-body">
+                <div class="step-title">
+                  Run Rentgen (pre-testing)
+                  <span class="pill">THE GAP</span>
+                </div>
+                <div class="step-desc">
+                  Paste one cURL → generate 50–200 tests (invalid data, boundaries, trimming, headers, security, etc).
+                  Get a fast reality check <strong>before</strong> anyone writes automation.
+                </div>
+                <div class="step-meta">local-only · no cloud · no scripts</div>
+              </div>
+            </li>
+
+            <li class="flow-step">
+              <div class="step-badge">3</div>
+              <div class="step-body">
+                <div class="step-title">Deploy to staging / test</div>
+                <div class="step-desc">Now you have a candidate build worth deeper verification.</div>
+                <div class="step-meta">staging · test env</div>
+              </div>
+            </li>
+
+            <li class="flow-step">
+              <div class="step-badge">4</div>
+              <div class="step-body">
+                <div class="step-title">Automation & regression suite</div>
+                <div class="step-desc">Write/extend tests where it actually makes sense long-term.</div>
+                <div class="step-meta">RestAssured · Playwright · Postman · contract tests</div>
+              </div>
+            </li>
+
+            <li class="flow-step">
+              <div class="step-badge">5</div>
+              <div class="step-body">
+                <div class="step-title">CI/CD gates</div>
+                <div class="step-desc">Run suites repeatedly, enforce quality gates, prevent regressions.</div>
+                <div class="step-meta">pipelines · nightly · PR checks</div>
+              </div>
+            </li>
+
+            <li class="flow-step">
+              <div class="step-badge">6</div>
+              <div class="step-body">
+                <div class="step-title">Release</div>
+                <div class="step-desc">Ship with higher confidence and fewer “it worked for me” surprises.</div>
+                <div class="step-meta">production</div>
+              </div>
+            </li>
+          </ol>
+
+          <div class="flow-foot">
+            <div class="flow-note">
+              <strong>Key idea:</strong> Rentgen lives <em>before</em> testing frameworks.
+              It turns the manual cURL/Postman moment into fast, structured coverage — then your existing automation takes over.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid features-grid reveal">
           <article class="card">
             <h3>Single cURL in, hundreds of tests out</h3>
             <p>
