@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description"
+    content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
+  <link rel="canonical" href="https://rentgen.io/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#top" class="brand">
+        <img src="assets/rentgen-logo.png" alt="Rentgen logo" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="#features">Features</a>
+        <a href="#security">Security</a>
+        <a href="#downloads">Downloads</a>
+        <a href="#cases">Case studies</a>
+        <a href="#github">GitHub</a>
+        <a href="/api-stories/">API Stories</a>
+        <a href="/dedicated/">Dedicated Rentgen</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container reveal">
+
+        <div class="section-header">
+          <h2>Downloads</h2>
+          <p>Rentgen release download statistics.</p>
+        </div>
+
+        <p id="downloads-loading">Loading download statistics…</p>
+
+        <div id="downloads-content" style="display:none">
+          <p>
+            <strong>Total downloads:</strong>
+            <span id="downloads-total">0</span>
+          </p>
+
+          <div id="downloads-releases" class="case-list"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen. All rights reserved.</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

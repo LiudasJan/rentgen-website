@@ -95,3 +95,70 @@ if (demoGif && gifModal) {
 
     els.forEach(el => io.observe(el));
   })();
+
+
+
+  // downloads page
+
+  (async function loadDownloads() {
+  const API_URL = "https://api.github.com/repos/Liudasjan/Rentgen/releases";
+
+  const loadingEl = document.getElementById("downloads-loading");
+  const contentEl = document.getElementById("downloads-content");
+  const totalEl = document.getElementById("downloads-total");
+  const releasesEl = document.getElementById("downloads-releases");
+
+  if (!loadingEl || !releasesEl) return;
+
+  try {
+    const res = await fetch(API_URL);
+    const releases = await res.json();
+
+    let grandTotal = 0;
+
+    releases.forEach(release => {
+      let releaseTotal = 0;
+
+      release.assets.forEach(asset => {
+        releaseTotal += asset.download_count;
+      });
+
+      grandTotal += releaseTotal;
+
+      const card = document.createElement("div");
+      card.className = "release-card";
+
+      card.innerHTML = `
+        <h3>${release.name} <span style="opacity:.6">(${release.tag_name})</span></h3>
+        <p><strong>${releaseTotal}</strong> downloads</p>
+
+        <table class="assets-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th class="asset-downloads">Downloads</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${release.assets.map(a => `
+              <tr>
+                <td>${a.name}</td>
+                <td class="asset-downloads">${a.download_count}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+
+      releasesEl.appendChild(card);
+    });
+
+    totalEl.textContent = grandTotal.toLocaleString();
+    loadingEl.style.display = "none";
+    contentEl.style.display = "block";
+
+  } catch (err) {
+    loadingEl.textContent = "Failed to load download statistics.";
+    console.error(err);
+  }
+})();
