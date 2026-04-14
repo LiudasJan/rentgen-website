@@ -866,17 +866,24 @@ body {
   display: inline-flex;
   align-items: center;
   margin-left: 0.5rem;
+  flex: 0 0 auto;
+  width: auto;
+  max-width: fit-content;
 }
 
 .language-switcher select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  display: inline-block;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
   background: rgba(15, 23, 42, 0.88);
   color: var(--fg);
   border: 1px solid rgba(148, 163, 184, 0.38);
   border-radius: 999px;
-  padding: 0.58rem 2.4rem 0.58rem 0.95rem;
+  padding: 0.58rem 2rem 0.58rem 0.95rem;
   font-size: 0.9rem;
   font-family: var(--font-sans);
   line-height: 1.2;
@@ -900,7 +907,7 @@ body {
 .language-switcher::after {
   content: "▾";
   position: absolute;
-  right: 0.9rem;
+  right: 0.8rem;
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -927,6 +934,7 @@ body {
   border: 0;
 }
 
+@media (max-width: 720px) {
   .language-switcher {
     width: 100%;
     margin-left: 0;
@@ -936,5 +944,6 @@ body {
   .language-switcher select {
     width: 100%;
     border-radius: 12px;
-    padding: 0.7rem 2.4rem 0.7rem 0.9rem;
+    padding: 0.7rem 2rem 0.7rem 0.9rem;
   }
+}
