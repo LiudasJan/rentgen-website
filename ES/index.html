@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8" />
-  <title>Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests</title>
+  <title>Rentgen – Automatización antes de la automatización: encuentra fallos de API cuando todavía no tienes tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description"
-    content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
-  <link rel="canonical" href="https://rentgen.io/ES" />
+    content="Rentgen es una herramienta segura de testing de APIs que funciona solo en local. Sin cuentas, sin seguimiento, sin logs: solo pruebas profundas de backend que se quedan en tu máquina." />
+  <meta name="language" content="Spanish" />
+  <meta name="content-language" content="es" />
+  <link rel="canonical" href="https://rentgen.io/ES/" />
+  <link rel="alternate" hreflang="en" href="https://rentgen.io/" />
+  <link rel="alternate" hreflang="es" href="https://rentgen.io/ES/" />
+  <link rel="alternate" hreflang="pt" href="https://rentgen.io/PT/" />
+  <link rel="alternate" hreflang="de" href="https://rentgen.io/DE/" />
+  <link rel="alternate" hreflang="fr" href="https://rentgen.io/FR/" />
+  <link rel="alternate" hreflang="ja" href="https://rentgen.io/JA/" />
+  <link rel="alternate" hreflang="ar" href="https://rentgen.io/AR/" />
+  <link rel="alternate" hreflang="x-default" href="https://rentgen.io/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
@@ -15,15 +25,17 @@
   <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
 
   <!-- Open Graph / Social -->
-  <meta property="og:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
-  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:title" content="Rentgen – Automatización antes de la automatización: encuentra fallos de API cuando todavía no tienes tests" />
+  <meta property="og:description" content="Sin nube. Sin seguimiento. Sin logs. Solo testing brutal de APIs en tu propia máquina." />
   <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
-  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:url" content="https://rentgen.io/ES/" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Rentgen" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Rentgen – Automation Before Automation: Finding API Bugs When You Have No Tests" />
-  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:title" content="Rentgen – Automatización antes de la automatización: encuentra fallos de API cuando todavía no tienes tests" />
+  <meta name="twitter:description" content="Sin nube. Sin seguimiento. Sin logs. Solo testing brutal de APIs en tu propia máquina." />
   <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
 
   <link rel="stylesheet" href="../styles.css" />
@@ -33,20 +45,33 @@
   <header class="site-header">
     <div class="container header-inner">
       <a href="#top" class="brand">
-        <img src="../assets/rentgen-logo.png" alt="Rentgen logo" class="brand-logo" />
+        <img src="../assets/rentgen-logo.png" alt="Logo de Rentgen" class="brand-logo" />
         <span class="brand-name">Rentgen</span>
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Mostrar u ocultar navegación">
         <span></span><span></span>
       </button>
       <nav class="site-nav">
-        <a href="#features">Features</a>
-        <a href="#security">Security</a>
-        <a href="#downloads">Downloads</a>
-        <a href="#cases">Case studies</a>
+        <a href="#features">Funciones</a>
+        <a href="#security">Seguridad</a>
+        <a href="#downloads">Descargas</a>
+        <a href="#cases">Casos reales</a>
         <a href="#github">GitHub</a>
-        <a href="/api-stories/">API Stories</a>
-        <a href="../dedicated/">Dedicated Rentgen</a>
+        <a href="../api-stories/">API Stories</a>
+        <a href="../dedicated/">Rentgen Dedicated</a>
+
+        <div class="language-switcher">
+          <label for="language-select" class="sr-only">Seleccionar idioma</label>
+          <select id="language-select" aria-label="Seleccionar idioma" onchange="if(this.value) window.location.href=this.value;">
+            <option value="../">English</option>
+            <option value="./" selected>Español</option>
+            <option value="../PT/">Português</option>
+            <option value="../DE/">Deutsch</option>
+            <option value="../FR/">Français</option>
+            <option value="../JA/">日本語</option>
+            <option value="../AR/">العربية</option>
+          </select>
+        </div>
       </nav>
     </div>
   </header>
@@ -56,45 +81,43 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h1>Secure API testing that never leaves your machine.</h1>
+          <h1>Testing seguro de APIs que nunca sale de tu máquina.</h1>
           <p class="hero-subtitle">
-            Paste a request. We'll show you whats breaks. Rentgen is a local-only API testing tool before testing. No accounts. No
-            tracking. No logging. Just brutal backend tests that stay where
-            they belong – on your laptop.
+            Pega una request. Te mostraremos qué se rompe. Rentgen es una herramienta local-only para testing de APIs antes del testing.
+            Sin cuentas. Sin seguimiento. Sin logs. Solo pruebas brutales de backend que se quedan donde deben estar: en tu portátil.
           </p>
           <div class="hero-badges">
-            <span class="badge">No cloud</span>
-            <span class="badge">No telemetry</span>
-            <span class="badge">No vendor lock-in</span>
+            <span class="badge">Sin nube</span>
+            <span class="badge">Sin telemetría</span>
+            <span class="badge">Sin vendor lock-in</span>
           </div>
           <div class="hero-cta">
-            <a href="https://github.com/LiudasJan/Rentgen/releases" class="btn btn-primary">Download Rentgen</a>
-            <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">View on GitHub</a>
+            <a href="https://github.com/LiudasJan/Rentgen/releases" class="btn btn-primary">Descargar Rentgen</a>
+            <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">Ver en GitHub</a>
           </div>
           <p class="hero-footnote">
-            Tested against real production APIs – including ChatGPT’s own API,
-            where Rentgen helped uncover serious bugs that were fixed
-            immediately.
+            Probado contra APIs reales en producción, incluida la propia API de ChatGPT,
+            donde Rentgen ayudó a descubrir fallos graves que se corrigieron de inmediato.
           </p>
         </div>
 
         <!-- Placeholder for animated GIF / demo -->
         <aside class="hero-media">
-        <div class="media-frame">
-          <div class="media-label">Live demo preview</div>
+          <div class="media-frame">
+            <div class="media-label">Vista previa de la demo en vivo</div>
 
-          <!-- Preview GIF vietoje kortelės -->
-          <div class="media-placeholder">
-            <img src="../assets/rentgen-demo.gif" alt="Rentgen demo" id="demoGif" />
+            <!-- Preview GIF vietoje kortelės -->
+            <div class="media-placeholder">
+              <img src="../assets/rentgen-demo.gif" alt="Demo de Rentgen" id="demoGif" />
+            </div>
           </div>
-        </div>
-      </aside>
+        </aside>
 
-      <!-- FULLSCREEN MODAL – DEDAM PO HERO, NE VIDUJ media-frame -->
-      <div id="gifModal" class="gif-modal">
-        <span class="gif-close">&times;</span>
-        <img class="gif-modal-content" id="gifModalImage" />
-      </div>
+        <!-- FULLSCREEN MODAL – DEDAM PO HERO, NE VIDUJ media-frame -->
+        <div id="gifModal" class="gif-modal">
+          <span class="gif-close">&times;</span>
+          <img class="gif-modal-content" id="gifModalImage" alt="Demo ampliada de Rentgen" />
+        </div>
       </div>
     </section>
 
@@ -102,31 +125,30 @@
     <section id="features" class="section">
       <div class="container">
         <header class="section-header">
-          <h2>Before you write tests, run Rentgen. See what your API is really doing.</h2>
+          <h2>Antes de escribir tests, ejecuta Rentgen. Mira lo que tu API realmente está haciendo.</h2>
           <p>
-            Rentgen doesn’t just send requests – it stress-tests your
-            assumptions. From trimming and validation to boundary and enum
-            tests, everything is generated from a single cURL.
+            Rentgen no se limita a enviar requests: pone a prueba tus suposiciones.
+            Desde trimming y validación hasta pruebas de límites y enums, todo se genera a partir de un único cURL.
           </p>
         </header>
 
         <!-- Rentgen placement / lifecycle -->
         <div class="rentgen-flow reveal">
           <div class="flow-head">
-            <h3>Where Rentgen fits (it replaces nothing)</h3>
+            <h3>Dónde encaja Rentgen (no sustituye nada)</h3>
             <p>
-              Developers usually do a quick manual “does it return 200?” check. Rentgen turns that moment into
-              real coverage — before automation, CI/CD, and release gates.
+              Los desarrolladores suelen hacer una comprobación manual rápida de “¿devuelve 200?”.
+              Rentgen convierte ese momento en cobertura real, antes de la automatización, CI/CD y los release gates.
             </p>
           </div>
 
-          <ol class="flow-steps" aria-label="API delivery workflow">
+          <ol class="flow-steps" aria-label="Flujo de entrega de APIs">
             <li class="flow-step">
               <div class="step-badge">1</div>
               <div class="step-body">
-                <div class="step-title">Build / change an endpoint</div>
-                <div class="step-desc">You just shipped code. No integration tests yet. No confidence yet.</div>
-                <div class="step-meta">dev branch · local env</div>
+                <div class="step-title">Crear o modificar un endpoint</div>
+                <div class="step-desc">Acabas de desplegar código. Aún no hay tests de integración. Aún no hay confianza.</div>
+                <div class="step-meta">rama dev · entorno local</div>
               </div>
             </li>
 
@@ -134,31 +156,31 @@
               <div class="step-badge">2</div>
               <div class="step-body">
                 <div class="step-title">
-                  Run Rentgen (pre-testing)
-                  <span class="pill">THE GAP</span>
+                  Ejecutar Rentgen (pre-testing)
+                  <span class="pill">EL HUECO</span>
                 </div>
                 <div class="step-desc">
-                  Paste one cURL → generate 50–200 tests (invalid data, boundaries, trimming, headers, security, etc).
-                  Get a fast reality check <strong>before</strong> anyone writes automation.
+                  Pega un cURL → genera de 50 a 200 tests (datos inválidos, límites, trimming, headers, seguridad, etc.).
+                  Obtén una comprobación rápida de la realidad <strong>antes</strong> de que alguien escriba automatización.
                 </div>
-                <div class="step-meta">local-only · no cloud · no scripts</div>
+                <div class="step-meta">solo local · sin nube · sin scripts</div>
               </div>
             </li>
 
             <li class="flow-step">
               <div class="step-badge">3</div>
               <div class="step-body">
-                <div class="step-title">Deploy to staging / test</div>
-                <div class="step-desc">Now you have a candidate build worth deeper verification.</div>
-                <div class="step-meta">staging · test env</div>
+                <div class="step-title">Desplegar en staging / test</div>
+                <div class="step-desc">Ahora ya tienes una build candidata que merece una verificación más profunda.</div>
+                <div class="step-meta">staging · entorno de test</div>
               </div>
             </li>
 
             <li class="flow-step">
               <div class="step-badge">4</div>
               <div class="step-body">
-                <div class="step-title">Automation & regression suite</div>
-                <div class="step-desc">Write/extend tests where it actually makes sense long-term.</div>
+                <div class="step-title">Automatización y suite de regresión</div>
+                <div class="step-desc">Escribe o amplía tests allí donde realmente tenga sentido a largo plazo.</div>
                 <div class="step-meta">RestAssured · Playwright · Postman · contract tests</div>
               </div>
             </li>
@@ -166,9 +188,9 @@
             <li class="flow-step">
               <div class="step-badge">5</div>
               <div class="step-body">
-                <div class="step-title">CI/CD gates</div>
-                <div class="step-desc">Run suites repeatedly, enforce quality gates, prevent regressions.</div>
-                <div class="step-meta">pipelines · nightly · PR checks</div>
+                <div class="step-title">Puertas de CI/CD</div>
+                <div class="step-desc">Ejecuta suites de forma repetida, aplica quality gates y evita regresiones.</div>
+                <div class="step-meta">pipelines · nightly · checks de PR</div>
               </div>
             </li>
 
@@ -176,16 +198,16 @@
               <div class="step-badge">6</div>
               <div class="step-body">
                 <div class="step-title">Release</div>
-                <div class="step-desc">Ship with higher confidence and fewer “it worked for me” surprises.</div>
-                <div class="step-meta">production</div>
+                <div class="step-desc">Publica con más confianza y con menos sorpresas del tipo “en mi máquina funcionaba”.</div>
+                <div class="step-meta">producción</div>
               </div>
             </li>
           </ol>
 
           <div class="flow-foot">
             <div class="flow-note">
-              <strong>Key idea:</strong> Rentgen lives <em>before</em> testing frameworks.
-              It turns the manual cURL/Postman moment into fast, structured coverage — then your existing automation takes over.
+              <strong>Idea clave:</strong> Rentgen vive <em>antes</em> de los frameworks de testing.
+              Convierte el momento manual de cURL/Postman en cobertura rápida y estructurada; después, tu automatización existente toma el relevo.
             </div>
           </div>
         </div>
@@ -194,39 +216,38 @@
 
         <div class="grid features-grid reveal">
           <article class="card">
-            <h3>Single cURL in, hundreds of tests out</h3>
+            <h3>Un solo cURL entra, cientos de tests salen</h3>
             <p>
-              Paste a cURL and let Rentgen expand it into a full test suite:
-              trims, invalid values, boundary conditions, enum variations and
-              more. Perfect for catching the “this will never happen” bugs.
+              Pega un cURL y deja que Rentgen lo convierta en una suite completa de testing:
+              trims, valores inválidos, condiciones límite, variaciones de enums y mucho más.
+              Perfecto para atrapar esos fallos de “esto nunca va a pasar”.
             </p>
           </article>
 
           <article class="card">
-            <h3>API testing tool before testing</h3>
+            <h3>La herramienta de testing de APIs antes del testing</h3>
             <p>
-              Rentgen checks how your API handles unexpected input:
-              leading/trailing spaces, wrong casing, malformed payloads,
-              missing fields. It doesn’t assume the happy path – it tries to
-              break it.
+              Rentgen comprueba cómo maneja tu API entradas inesperadas:
+              espacios al principio o al final, mayúsculas y minúsculas incorrectas, payloads malformados,
+              campos ausentes. No asume el happy path: intenta romperlo.
             </p>
           </article>
 
           <article class="card">
-            <h3>Works offline, by design</h3>
+            <h3>Funciona offline, por diseño</h3>
             <p>
-              No cloud backend, no SaaS layer, no hidden HTTP calls. Rentgen
-              runs as a desktop app on your machine. Perfect for regulated
-              environments and sensitive APIs.
+              Sin backend en la nube, sin capa SaaS, sin llamadas HTTP ocultas.
+              Rentgen se ejecuta como aplicación de escritorio en tu máquina.
+              Perfecto para entornos regulados y APIs sensibles.
             </p>
           </article>
 
           <article class="card">
-            <h3>Battle-tested on real APIs</h3>
+            <h3>Probado en APIs reales</h3>
             <p>
-              We pointed Rentgen at ChatGPT’s API and found real issues in
-              production. OpenAI fixed them immediately – that’s the level of
-              depth Rentgen brings to your own APIs.
+              Apuntamos Rentgen a la API de ChatGPT y encontramos problemas reales en producción.
+              OpenAI los corrigió de inmediato: ese es el nivel de profundidad
+              que Rentgen aporta también a tus propias APIs.
             </p>
           </article>
         </div>
@@ -239,37 +260,36 @@
         <div>
           <header class="section-header">
             <h2>
-              Security & privacy first. Not as a feature – as a constraint.
+              Seguridad y privacidad primero. No como una función, sino como una restricción.
             </h2>
           </header>
           <ul class="checklist">
             <li>
-              <span>🔒</span><strong>No accounts.</strong> Install and use. No
-              sign-up, no onboarding flow, no user database.
+              <span>🔒</span><strong>Sin cuentas.</strong> Instala y usa. Sin registro,
+              sin onboarding, sin base de datos de usuarios.
             </li>
             <li>
-              <span>🕵️‍♂️</span><strong>No tracking.</strong> No analytics, no
-              telemetry, no “usage metrics”. We don’t need your API data to
-              improve the product.
+              <span>🕵️‍♂️</span><strong>Sin seguimiento.</strong> Sin analíticas,
+              sin telemetría, sin “métricas de uso”. No necesitamos tus datos de API
+              para mejorar el producto.
             </li>
             <li>
-              <span>🗑</span><strong>No logging.</strong> Requests and
-              responses stay on your machine. Rentgen doesn’t upload or store
-              them anywhere.
+              <span>🗑</span><strong>Sin logs.</strong> Las requests y responses
+              se quedan en tu máquina. Rentgen no las sube ni las almacena en ningún sitio.
             </li>
             <li>
-              <span>🏢</span><strong>Safe for regulated environments.</strong> Works
-              completely offline – ideal for banking, government, defence and
-              internal APIs.
+              <span>🏢</span><strong>Seguro para entornos regulados.</strong> Funciona
+              completamente offline: ideal para banca, administraciones públicas, defensa
+              y APIs internas.
             </li>
           </ul>
         </div>
         <div class="security-card">
-          <h3>Use Rentgen where cloud tools are forbidden.</h3>
+          <h3>Usa Rentgen donde las herramientas cloud están prohibidas.</h3>
           <p>
-            If your security team blocks Postman sync, forbids SaaS API tools
-            or bans external AI, Rentgen still works. Everything runs locally
-            – security officers can read the code and sleep at night.
+            Si tu equipo de seguridad bloquea la sincronización de Postman, prohíbe las herramientas SaaS para APIs
+            o veta la IA externa, Rentgen sigue funcionando. Todo se ejecuta en local:
+            los responsables de seguridad pueden leer el código y dormir tranquilos.
           </p>
         </div>
       </div>
@@ -279,35 +299,34 @@
     <section id="downloads" class="section">
       <div class="container">
         <header class="section-header">
-          <h2>Download Rentgen</h2>
+          <h2>Descargar Rentgen</h2>
           <p>
-            Native desktop builds for your OS. No installers that phone home –
-            just the app.
+            Builds nativas de escritorio para tu sistema operativo. Sin instaladores que llamen a casa:
+            solo la aplicación.
           </p>
         </header>
 
         <div class="grid download-grid">
           <div class="download-card">
             <h3>macOS</h3>
-
-            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for macOS</a>
-            <p class="download-meta">Apple Silicon & Intel · .dmg / .zip</p>
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Descargar para macOS</a>
+            <p class="download-meta">Apple Silicon e Intel · .dmg / .zip</p>
           </div>
           <div class="download-card">
             <h3>Windows</h3>
-            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for Windows</a>
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Descargar para Windows</a>
             <p class="download-meta">Windows 10+ · .exe / .zip</p>
           </div>
           <div class="download-card">
             <h3>Linux</h3>
-            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Download for Linux</a>
+            <a href="https://github.com/LiudasJan/Rentgen/releases/" class="btn btn-primary">Descargar para Linux</a>
             <p class="download-meta">AppImage / tar.gz</p>
           </div>
         </div>
 
         <p class="downloads-footnote">
-          All binaries are built from the open GitHub repository. Verify
-          signatures, diff releases, and review the code anytime.
+          Todos los binarios se generan a partir del repositorio abierto de GitHub.
+          Verifica firmas, compara releases y revisa el código cuando quieras.
         </p>
       </div>
     </section>
@@ -316,145 +335,140 @@
     <section id="cases" class="section section-alt">
       <div class="container">
         <header class="section-header">
-          <h2>Case studies & API stories</h2>
+          <h2>Casos reales e historias de APIs</h2>
           <p>
-            Real APIs. Real bugs. Real fixes. We’re gradually publishing how
-            Rentgen behaves against popular APIs and internal systems.
+            APIs reales. Fallos reales. Correcciones reales. Estamos publicando poco a poco
+            cómo se comporta Rentgen frente a APIs populares y sistemas internos.
           </p>
         </header>
 
         <div class="case-list">
 
           <article class="case-card">
-            <h3>ChatGPT API – breaking the magic box</h3>
+            <h3>API de ChatGPT: rompiendo la caja mágica</h3>
             <p>
-              We pointed Rentgen at ChatGPT’s API and found issues we
-              genuinely didn’t expect to see in production. The best part?
-              They were fixed immediately after we reported them.
+              Apuntamos Rentgen a la API de ChatGPT y encontramos problemas
+              que sinceramente no esperábamos ver en producción. ¿La mejor parte?
+              Se corrigieron inmediatamente después de reportarlos.
             </p>
 
             <a href="https://www.linkedin.com/pulse/i-tested-chatgpts-backend-api-using-rentgen-found-more-jankauskas-ixsnf"
               class="case-link" target="_blank" rel="noopener noreferrer">
-              Read the case study on LinkedIn →
+              Leer el caso en LinkedIn →
             </a>
           </article>
 
           <article class="case-card">
-            <h3>Amazon API Case Study – 16/100 certificate score in 2 minutes</h3>
+            <h3>Estudio de caso de la API de Amazon: puntuación de certificado 16/100 en 2 minutos</h3>
             <p>
-              We tested a simple Amazon child profile update endpoint using Rentgen.
-              In under two minutes, structural inconsistencies surfaced: incorrect
-              status codes, HTML returned from a JSON API, and late payload rejection.
-              Not a security audit — just automated contract analysis.
+              Probamos un endpoint sencillo de actualización de perfil infantil de Amazon usando Rentgen.
+              En menos de dos minutos aparecieron inconsistencias estructurales: códigos de estado incorrectos,
+              HTML devuelto por una API JSON y rechazo tardío del payload.
+              No fue una auditoría de seguridad: solo análisis automatizado del contrato.
             </p>
 
-            <a href="./api-stories/amazon-profile-update-api-testing-case-study.html"
+            <a href="../api-stories/amazon-profile-update-api-testing-case-study.html"
               class="case-link">
-              Read the case study on Rentgen.io →
+              Leer el caso en Rentgen.io →
             </a>
           </article>
 
           <article class="case-card">
-            <h3>Proton Pass API – structural signals under Rentgen testing</h3>
+            <h3>API de Proton Pass: señales estructurales bajo testing con Rentgen</h3>
             <p>
-              We tested a real Proton Pass shared-vault request with Rentgen and examined
-              how the API behaves under oversized payloads, missing authentication,
-              and protocol-level edge cases.
-              No internal knowledge — just a real request and observable signals.
+              Probamos una request real de shared vault de Proton Pass con Rentgen y analizamos
+              cómo se comporta la API frente a payloads sobredimensionados, autenticación ausente
+              y edge cases a nivel de protocolo.
+              Sin conocimiento interno: solo una request real y señales observables.
             </p>
 
-            <a href="./api-stories/protonpass-api-under-rentgen.html" class="case-link">
-              Read the case study on Rentgen.io →
+            <a href="../api-stories/protonpass-api-under-rentgen.html" class="case-link">
+              Leer el caso en Rentgen.io →
             </a>
           </article>
 
-
           <article class="case-card">
-            <h3>Jira API – what a real request reveals under Rentgen testing</h3>
+            <h3>API de Jira: lo que revela una request real bajo testing con Rentgen</h3>
             <p>
-              We tested a real Jira ticket creation request with Rentgen and looked
-              at how the API behaves under invalid input, edge cases, and load.
-              No mocks, no assumptions — just a real request and real findings.
+              Probamos una request real de creación de tickets en Jira con Rentgen y observamos
+              cómo se comporta la API ante entradas inválidas, edge cases y carga.
+              Sin mocks, sin suposiciones: solo una request real y hallazgos reales.
             </p>
 
-            <a href="./api-stories/jira-api-testing-with-rentgen.html" class="case-link">
-              Read the case study on Rentgen.io →
+            <a href="../api-stories/jira-api-testing-with-rentgen.html" class="case-link">
+              Leer el caso en Rentgen.io →
             </a>
           </article>
 
           <article class="case-card">
-            <h3>Revolut Wallet-Transfer API — RENTGEN Finds Cracks in 2 Minutes</h3>
+            <h3>API de transferencias wallet de Revolut: RENTGEN encuentra grietas en 2 minutos</h3>
             <p>
-              Revolut is one of the most polished fintech apps in the world — but even top-tier products have blind
-              spots.
-              RENTGEN scanned a real wallet-transfer request and surfaced multiple issues in under two minutes:
-              incorrect method handling, weak input validation, missing headers, and payload cases that crash the
-              backend with 500 errors.
+              Revolut es una de las apps fintech más pulidas del mundo, pero incluso los productos de primer nivel tienen puntos ciegos.
+              RENTGEN analizó una request real de wallet transfer y sacó a la luz varios problemas en menos de dos minutos:
+              gestión incorrecta de métodos, validación débil de entradas, headers ausentes y payloads que hacen caer el backend con errores 500.
             </p>
 
             <a href="https://www.linkedin.com/pulse/i-pointed-rentgen-revoluts-wallet-transfer-api-what-liudas-jankauskas-oppqf"
               class="case-link" target="_blank" rel="noopener noreferrer">
-              Read the case study on LinkedIn →
+              Leer el caso en LinkedIn →
             </a>
           </article>
 
           <article class="case-card">
             <h3>
-              Even when you know nothing about the API, you can still see
-              through it
+              Incluso cuando no sabes nada sobre la API, aún puedes ver a través de ella
             </h3>
             <p>
-              When you test APIs, you often start from scratch, no docs, no
-              setup, no context. So I wanted to see what would happen if I
-              tested Trello’s API with RENTGEN, a tool that auto-generates
-              hundreds of tests from a single cURL request.
+              Cuando pruebas APIs, muchas veces empiezas desde cero: sin documentación,
+              sin setup, sin contexto. Así que quise ver qué pasaría si probaba la API de Trello
+              con RENTGEN, una herramienta que genera automáticamente cientos de tests
+              a partir de una sola request cURL.
             </p>
 
             <a href="https://www.linkedin.com/pulse/even-when-you-know-nothing-api-can-still-see-through-jankauskas-kpkzf"
               class="case-link" target="_blank" rel="noopener noreferrer">
-              Read the case study on LinkedIn →
+              Leer el caso en LinkedIn →
             </a>
           </article>
 
           <article class="case-card">
-            <h3>Azure DevOps API Breaks in 2 Minutes — RENTGEN Case Study</h3>
+            <h3>La API de Azure DevOps se rompe en 2 minutos — caso real con RENTGEN</h3>
             <p>
-              A quick, structured case study showing how RENTGEN uncovered
-              multiple issues in the Azure DevOps API — from incorrect
-              security behavior to broken validation and misconfigured CORS —
-              in under two minutes of testing.
+              Un caso rápido y estructurado que muestra cómo RENTGEN descubrió
+              varios problemas en la API de Azure DevOps, desde comportamientos de seguridad incorrectos
+              hasta validación rota y CORS mal configurado,
+              en menos de dos minutos de testing.
             </p>
 
             <a href="https://www.linkedin.com/pulse/testing-azure-devops-api-rentgen-liudas-jankauskas-gks3f/"
               class="case-link" target="_blank" rel="noopener noreferrer">
-              Read the case study on LinkedIn →
+              Leer el caso en LinkedIn →
             </a>
           </article>
 
           <article class="case-card">
             <h3>
-              Stripe’s “Perfect” API — RENTGEN Broke It in Under 2 Minutes
+              La API “perfecta” de Stripe: RENTGEN la rompió en menos de 2 minutos
             </h3>
             <p>
-              A quick case study showing how RENTGEN evaluated Stripe’s “gold
-              standard” API. Even with its strong reputation, the scan
-              revealed outdated request formats, incorrect method handling,
-              missing security headers, and weak data validation — all
-              discovered in under two minutes.
+              Un caso rápido que muestra cómo RENTGEN evaluó la API “gold standard” de Stripe.
+              Incluso con su gran reputación, el análisis reveló formatos de request obsoletos,
+              gestión incorrecta de métodos, ausencia de headers de seguridad
+              y validación débil de datos, todo descubierto en menos de dos minutos.
             </p>
 
             <a href="https://www.linkedin.com/pulse/said-stripes-api-perfect-i-gave-2-minutes-liudas-jankauskas-brkuf"
               class="case-link" target="_blank" rel="noopener noreferrer">
-              Read the case study on LinkedIn →
+              Leer el caso en LinkedIn →
             </a>
           </article>
 
           <article class="case-card case-card-placeholder">
-            <h3>Next case study coming soon</h3>
+            <h3>Próximo caso real muy pronto</h3>
             <p>
-              We’re continuously testing Rentgen against real-world APIs:
-              banking, marketing platforms, internal tools. New write-ups will
-              appear here as they’re ready.
+              Seguimos probando Rentgen contra APIs del mundo real:
+              banca, plataformas de marketing, herramientas internas.
+              Nuevos artículos aparecerán aquí en cuanto estén listos.
             </p>
           </article>
 
@@ -467,21 +481,21 @@
       <div class="container github-grid">
         <div>
           <header class="section-header">
-            <h2>Open source core. Transparent by design.</h2>
+            <h2>Core open source. Transparente por diseño.</h2>
           </header>
           <p>
-            Rentgen’s core is open – so your security team, developers and QA
-            engineers can review exactly how requests are generated and what
-            leaves your machine. No hidden agents, no mystery binaries.
+            El core de Rentgen es abierto, así que tu equipo de seguridad, desarrolladores e ingenieros QA
+            pueden revisar exactamente cómo se generan las requests y qué sale de tu máquina.
+            Sin agentes ocultos, sin binarios misteriosos.
           </p>
-          <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">Open Rentgen on GitHub</a>
+          <a href="https://github.com/LiudasJan/Rentgen" class="btn btn-ghost">Abrir Rentgen en GitHub</a>
         </div>
         <div class="github-meta">
           <ul>
-            <li>✅ API hygiene scanner focused on input validation</li>
-            <li>✅ Generates tests from a single cURL</li>
-            <li>✅ Built by a QA lead, not just another “dev toy”</li>
-            <li>✅ Designed for teams that actually care about quality</li>
+            <li>✅ Escáner de higiene de APIs centrado en validación de entradas</li>
+            <li>✅ Genera tests a partir de un solo cURL</li>
+            <li>✅ Creado por un QA Lead, no por otro “juguete para devs”</li>
+            <li>✅ Diseñado para equipos a los que de verdad les importa la calidad</li>
           </ul>
         </div>
       </div>
@@ -490,8 +504,8 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> Rentgen. All rights reserved.</span>
-      <span class="footer-note">Built for testers, by a tester.</span>
+      <span>© <span id="year"></span> Rentgen. Todos los derechos reservados.</span>
+      <span class="footer-note">Creado para testers, por un tester.</span>
     </div>
   </footer>
 
