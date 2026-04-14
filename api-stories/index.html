@@ -8,6 +8,18 @@
     content="Rentgen is a secure, local-only API testing tool. No accounts, no tracking, no logging – just deep backend tests that stay on your machine." />
   <link rel="canonical" href="https://rentgen.io/api-stories/index.html" />
 
+  <link rel="alternate" hreflang="es" href="https://rentgen.io/ES/api-stories/index.html" />
+  
+  <!--
+  <link rel="alternate" hreflang="pt" href="https://rentgen.io/PT/api-stories/index.html" />
+  <link rel="alternate" hreflang="de" href="https://rentgen.io/DE/api-stories/index.html" />
+  <link rel="alternate" hreflang="fr" href="https://rentgen.io/FR/api-stories/index.html" />
+  <link rel="alternate" hreflang="ja" href="https://rentgen.io/JA/api-stories/index.html" />
+  <link rel="alternate" hreflang="ar" href="https://rentgen.io/AR/api-stories/index.html" />
+  -->
+  
+  <link rel="alternate" hreflang="x-default" href="https://rentgen.io/api-stories/index.html" /> 
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
   <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
@@ -46,6 +58,22 @@
         <a href="https://rentgen.io/#github">GitHub</a>
         <a href="https://rentgen.io/api-stories/">API Stories</a>
         <a href="https://rentgen.io/dedicated/">Dedicated Rentgen </a>
+
+        <div class="language-switcher">
+          <label for="language-select" class="sr-only">Seleccionar idioma</label>
+          <select id="language-select" aria-label="Seleccionar idioma" onchange="if(this.value) window.location.href=this.value;">
+            <option value="../" selected>English</option>
+            <option value="./ES/" >Español</option>
+            
+            <!--  
+            <option value="../PT/">Português</option>
+            <option value="../DE/">Deutsch</option>
+            <option value="../FR/">Français</option>
+            <option value="../JA/">日本語</option>
+            <option value="../AR/">العربية</option>
+            -->
+          </select>
+        </div>
       </nav>
     </div>
   </header>
