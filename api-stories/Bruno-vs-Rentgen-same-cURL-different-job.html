@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bruno vs Rentgen — same cURL, different job</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Bruno-vs-Rentgen-same-cURL-different-job.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Bruno vs Rentgen — same cURL, different job</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Bruno and Rentgen often end up in the same conversation because both start from a familiar place: an API request. Usually that request is a cURL copied from a browser, a backend log, Swagger, or another tool. But from that point onward, the tools go in completely different directions.
+        </p>
+
+        <p>
+          Bruno is a REST client. A good one. It helps you send requests, organize collections, work locally, keep files in Git, and run the requests you already understand. If you want a clean, lightweight alternative to heavier API clients, Bruno makes a lot of sense.
+        </p>
+
+        <p>
+          Rentgen is not trying to be that. Rentgen starts after the first request works, at the exact moment when many teams say “tested” and move on. That is where things usually go wrong, because one successful request only proves that one specific scenario works. It says almost nothing about missing fields, wrong types, boundary values, invalid enums, whitespace, malformed payloads, or broken error handling.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>One cURL request in. A lot more reality out.</figcaption>
+        </figure>
+
+        <h2>Bruno helps you send the request. Rentgen challenges the request.</h2>
+
+        <p>
+          That is the simplest way to separate the two. In Bruno, you decide what to send and what to check. You can add assertions, chain requests, create collections, and build a workflow around the API. But the thinking still comes from you. If you do not think about a missing required field, Bruno will not magically test it. If you do not add a case for wrong casing, whitespace, or unexpected values, it will not appear by itself.
+        </p>
+
+        <p>
+          Rentgen works from a different assumption: you probably missed something. Not because you are bad at testing, but because nobody naturally thinks through every boring edge case when they are just trying to see whether an endpoint works. Rentgen takes the same request and generates those variations automatically, then shows how the API behaves when the input is no longer perfect.
+        </p>
+
+        <h2>The problem is false confidence</h2>
+
+        <p>
+          Most API bugs do not start with complex architecture. They start with small assumptions. A field is always present. A string is always trimmed. An enum always arrives in the expected casing. A number is always a number. A client always sends a valid payload. Then production politely explains that none of this is guaranteed.
+        </p>
+
+        <p>
+          This is why “I tested it in Bruno” and “the API is tested” are not the same sentence. Sending a request is useful. Seeing a response is useful. But it is still only the beginning of testing, not the end of it.
+        </p>
+
+        <h2>Where Rentgen fits</h2>
+
+        <p>
+          Rentgen fits before formal automation, before CI, and before teams start writing assertions around behavior they have not properly explored yet. You paste a real request, generate tests, and see what breaks. Some results will be expected 4xx responses. Some will reveal inconsistent validation. Some will show 500 errors that should never happen. Some will expose confusing status codes that make clients and testers waste time.
+        </p>
+
+        <p>
+          That is not a replacement for Bruno. It is a different step. Use Bruno to work with the API. Use Rentgen to check whether the API survives the kind of input real systems eventually send.
+        </p>
+
+        <h2>Use both, but do not confuse them</h2>
+
+        <p>
+          If your team wants a Git-friendly REST client, Bruno is a strong choice. If your team wants to quickly understand whether an endpoint is fragile before writing automation around it, Rentgen is built for that moment.
+        </p>
+
+        <p>
+          The workflow is simple: get the request working in your API client, run it through Rentgen, fix the obvious problems, and only then turn that knowledge into proper automated tests. That way automation is based on reality, not on the first happy-path response that happened to work.
+        </p>
+
+        <p>
+          Bruno helps you manage API requests. Rentgen helps you find out what those requests did not prove. Same cURL, different job.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
