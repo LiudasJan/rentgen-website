@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hoppscotch vs Rentgen — API client and API reality check are not the same job</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Hoppscotch-vs-Rentgen-API-client-and-API-reality-check-are-not-the-same-job.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Hoppscotch vs Rentgen — API client and API reality check are not the same job</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Hoppscotch and Rentgen can look similar if you only look at the starting point. Both can begin with an API request. Both are useful when you are working with endpoints. Both belong somewhere in the API development workflow. But calling them competitors is a bit like comparing a screwdriver with a smoke detector because both are found in the same building.
+        </p>
+
+        <p>
+          Hoppscotch is an API client. A fast, clean, open-source one. It helps developers send requests, inspect responses, organize collections, use environments, write scripts, run checks, and collaborate around API work. If you need a lightweight place to call an endpoint and see what comes back, Hoppscotch makes sense.
+        </p>
+
+        <p>
+          Rentgen is not trying to be that place. Rentgen starts at the uncomfortable moment after the first request works. The endpoint returns 200. The JSON looks correct. Everyone relaxes. Someone says “tested”. That is exactly where Rentgen becomes useful, because one successful request only proves that one carefully prepared request worked once.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Hoppscotch helps you work with a request. Rentgen asks what that request did not prove.</figcaption>
+        </figure>
+
+        <h2>Hoppscotch helps you send and manage API requests</h2>
+
+        <p>
+          The normal Hoppscotch workflow is familiar to anyone who has worked with APIs. You choose a method, enter a URL, add headers, authorization, parameters, and a body, then send the request. You can save it into a collection, reuse variables, share work with a team, and build a more organized API workflow around it.
+        </p>
+
+        <p>
+          That is useful work. Without a good API client, developers waste time copying requests between terminals, browser tools, documentation pages, and random notes. Hoppscotch gives that work a proper interface. It is especially attractive when people want something open-source, fast, and less heavy than the usual bloated API platforms.
+        </p>
+
+        <p>
+          But an API client still depends on the person using it. You decide what to send. You decide what to check. You decide which edge cases matter. If nobody writes a test for a missing field, that missing field is not tested. If nobody tries whitespace, wrong casing, an oversized string, an invalid enum, a malformed payload, or a broken token, those cases stay invisible.
+        </p>
+
+        <h2>Rentgen is for the gap after “it works”</h2>
+
+        <p>
+          Rentgen is built for a different problem: false confidence. The first valid request works, so the endpoint feels safe. But real APIs do not receive perfect input forever. Mobile apps send stale tokens. Frontends send empty strings. Integrations pass unexpected values. Users copy spaces into fields. Old clients keep calling endpoints in ways the new backend no longer expects.
+        </p>
+
+        <p>
+          Rentgen takes one real cURL request and expands it into dozens or hundreds of checks. It mutates the input, removes fields, changes values, tests boundaries, tries invalid data, checks trimming behavior, sends malformed payloads, and observes what the backend actually does. Not what the documentation says. Not what the developer remembers implementing. What the API really returns.
+        </p>
+
+        <p>
+          This is why Rentgen is not a Hoppscotch replacement. You would not use Rentgen as your main place to manually explore an API. You would not use it to neatly maintain a large collection of requests for daily development work. That is not the point. Rentgen is the tool you run when you want to know whether the endpoint survives bad input before you start pretending it is ready.
+        </p>
+
+        <h2>The difference is not UI. The difference is responsibility.</h2>
+
+        <p>
+          Hoppscotch gives you control. Rentgen gives you pressure. Hoppscotch says: here is a clean way to send the request you want. Rentgen says: fine, now let us see what happens when the request is not so polite.
+        </p>
+
+        <p>
+          That difference matters because many API problems are not discovered by sending the happy path again. They are discovered when something small changes. A required field disappears. A number arrives as a string. A status value comes in lowercase. A name has leading spaces. A payload is too large. An endpoint returns 500 when it should return 400. An unsupported method returns something weird instead of a clear 405.
+        </p>
+
+        <p>
+          None of this is exotic security research. It is basic API hygiene. The boring stuff. The stuff teams skip because it feels obvious. Then production proves it was not obvious at all.
+        </p>
+
+        <h2>Use Hoppscotch before Rentgen, not instead of Rentgen</h2>
+
+        <p>
+          A practical workflow is simple. Use Hoppscotch to build and understand the request. Get the headers right. Set the authorization. Check the body. Confirm that the endpoint works for the valid scenario. Save it if you need it again.
+        </p>
+
+        <p>
+          Then copy that working request as cURL and run it through Rentgen. Now the job changes. You are no longer asking “does this request work?” You are asking “what happens when this request stops being perfect?” That is a much better question if you care about backend quality.
+        </p>
+
+        <p>
+          Some Rentgen results will be clean. Good. That means the API handles bad input properly. Some results will be noisy but expected. Also fine. But sometimes you will see the useful ugly truth: inconsistent validation, confusing status codes, missing error messages, broken auth behavior, HTML returned from a JSON API, or 500 errors caused by input the backend should reject safely.
+        </p>
+
+        <h2>Why this matters before automation</h2>
+
+        <p>
+          Teams often jump from a working API client request directly into automation. They write tests around the happy path, maybe add a few obvious negative cases, and call it regression coverage. The problem is that automation created too early often automates assumptions, not reality.
+        </p>
+
+        <p>
+          Rentgen fits before that step. It helps you explore the endpoint quickly, find the obvious weak spots, and decide what deserves proper long-term automated coverage. This is why we call it automation before automation. Not because it replaces test frameworks, but because it gives you better information before you write those tests.
+        </p>
+
+        <p>
+          Hoppscotch is excellent for working with APIs. Rentgen is useful when you want to challenge them. One helps you create and manage requests. The other turns one request into a backend reality check.
+        </p>
+
+        <h2>So, Hoppscotch vs Rentgen?</h2>
+
+        <p>
+          The honest answer is: use both if both problems exist in your team. Use Hoppscotch when you need a fast, open-source API client for day-to-day development and debugging. Use Rentgen when you need to find out whether an endpoint handles edge cases, invalid input, and ugly real-world behavior before QA, automation, or production finds it for you.
+        </p>
+
+        <p>
+          Hoppscotch helps you ask the API a question. Rentgen helps you find out how badly the API behaves when the question is slightly wrong. Same request. Different phase. Different job.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
