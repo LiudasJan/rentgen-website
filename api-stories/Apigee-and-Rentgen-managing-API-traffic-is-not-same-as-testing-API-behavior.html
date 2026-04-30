@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apigee and Rentgen — managing API traffic is not the same as testing API behavior</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Apigee-and-Rentgen-managing-API-traffic-is-not-same-as-testing-API-behavior.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Apigee and Rentgen — managing API traffic is not the same as testing API behavior</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Apigee and Rentgen both live somewhere in the API world, but they are not solving the same problem. Apigee is an enterprise API management platform. Rentgen is a local-first API hygiene scanner. One helps organizations control, secure, publish, monitor, and scale APIs. The other helps teams find out how a specific endpoint behaves when the input is no longer clean.
+        </p>
+
+        <p>
+          Comparing them directly is not very useful. Apigee sits around the API as infrastructure. Rentgen points directly at the API implementation and asks what breaks.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Apigee manages API access and traffic. Rentgen tests how the backend behaves under messy input.</figcaption>
+        </figure>
+
+        <h2>Apigee is built for API management</h2>
+
+        <p>
+          Apigee is designed for organizations that expose APIs at scale. It helps with API gateways, traffic routing, authentication, authorization, rate limits, quotas, policies, analytics, developer portals, and API product management. In large companies, this layer matters a lot.
+        </p>
+
+        <p>
+          When many teams, partners, customers, and applications depend on APIs, you need control. Who can call the API? How often? With which token? Through which environment? Under what policy? What happens when traffic spikes? How is usage monitored? How are APIs published and governed?
+        </p>
+
+        <p>
+          Those are Apigee problems. They are infrastructure, governance, and platform problems. They are not small problems, and enterprise teams need tools like Apigee because raw endpoints alone are not enough when APIs become products.
+        </p>
+
+        <h2>But an API gateway does not prove the backend is healthy</h2>
+
+        <p>
+          A gateway can enforce policies, reject unauthorized traffic, apply quotas, transform requests, and provide analytics. That is valuable. But it does not automatically mean the backend handles bad input correctly.
+        </p>
+
+        <p>
+          The endpoint behind the gateway can still have weak validation. It can still return 500 when a required field is missing. It can still accept invalid values, mishandle empty strings, break on malformed JSON, or produce inconsistent error responses that make client integration painful.
+        </p>
+
+        <p>
+          Apigee can protect and manage access to an API. Rentgen checks how the API behaves when the request itself becomes ugly.
+        </p>
+
+        <h2>Rentgen works at the endpoint behavior level</h2>
+
+        <p>
+          Rentgen starts with one real request, usually copied as cURL, and expands it into many variations. Missing fields, wrong types, boundary values, whitespace, invalid enums, malformed payloads, strange headers, unsupported methods — the boring cases that real systems eventually send.
+        </p>
+
+        <p>
+          The goal is not to manage traffic. The goal is to observe behavior. Does the endpoint reject bad input cleanly? Does it return predictable 4xx responses? Does it crash with 5xx errors? Does it behave differently depending on small input changes?
+        </p>
+
+        <p>
+          That kind of feedback is useful before formal QA, before long-term automation, and before an API is placed behind serious platform infrastructure.
+        </p>
+
+        <h2>Different layers, different responsibilities</h2>
+
+        <p>
+          Apigee works at the API platform layer. It helps organizations expose APIs safely and consistently. Rentgen works at the request behavior layer. It helps developers and QA engineers see what the implementation actually does under imperfect input.
+        </p>
+
+        <p>
+          These layers can support each other, but they should not be confused. A well-managed API can still have poor validation. A locally tested API still needs proper gateway policies if it is exposed at scale.
+        </p>
+
+        <p>
+          Good API quality needs both kinds of thinking: platform control and implementation behavior.
+        </p>
+
+        <h2>A workflow that makes sense</h2>
+
+        <p>
+          Before an endpoint becomes part of a managed API product, developers should understand how it behaves. A working request is not enough. Run it locally, copy the cURL, and let Rentgen check how the backend reacts to imperfect input.
+        </p>
+
+        <p>
+          Fix the obvious issues early: unsafe 500 errors, confusing status codes, weak validation, inconsistent responses, or broken authentication behavior. Then move the API into a more structured lifecycle with documentation, gateway policies, monitoring, analytics, and governance.
+        </p>
+
+        <p>
+          At that stage, Apigee becomes extremely useful. It controls access, applies policies, manages consumers, tracks usage, and helps operate APIs as real enterprise assets.
+        </p>
+
+        <h2>No need to choose sides</h2>
+
+        <p>
+          Apigee is not a replacement for endpoint-level testing. Rentgen is not a replacement for API management. They are different tools for different responsibilities.
+        </p>
+
+        <p>
+          Use Rentgen when you want to know whether an endpoint survives bad input. Use Apigee when you need to manage, secure, publish, and scale APIs across teams and consumers.
+        </p>
+
+        <p>
+          Apigee helps control how APIs are exposed. Rentgen helps reveal how APIs behave. Same API lifecycle, different layer, different job.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
