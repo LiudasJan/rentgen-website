@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>cURL and Rentgen — one proves it works, the other proves what breaks</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/cURL-and-Rentgen-one-proves-it-works-the-other-proves-what-breaks.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>cURL and Rentgen — one proves it works, the other proves what breaks</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          cURL and Rentgen often appear in the same conversation because they both start from the same place: a raw HTTP request. But they are not alternatives, and they are not competing tools. In fact, Rentgen depends on cURL. Without it, Rentgen would not exist in the form it does today.
+        </p>
+
+        <p>
+          cURL is one of the most fundamental tools in API development. It is simple, direct, and brutally honest. You write exactly what you want to send, and the server responds. No abstraction, no UI, no interpretation. Just a request and a response.
+        </p>
+
+        <p>
+          Rentgen builds on top of that. It takes a working cURL request and asks a different question: what happens when this request stops being perfect?
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>cURL gives you the exact request. Rentgen explores everything around it.</figcaption>
+        </figure>
+
+        <h2>cURL is the ground truth</h2>
+
+        <p>
+          Every API tool eventually reduces to something like cURL. Whether you use Postman, Insomnia, Hoppscotch, or a browser, under the hood you are still sending HTTP requests. cURL simply exposes that layer directly.
+        </p>
+
+        <p>
+          That is why developers trust it. If something works in cURL, you know exactly what was sent. There is no hidden behavior, no UI magic, no abstraction layer. It is the closest thing to talking to the server in its native language.
+        </p>
+
+        <p>
+          It is also the easiest format to share. Logs, documentation, bug reports, Slack messages — a cURL request can travel anywhere and be reproduced instantly.
+        </p>
+
+        <h2>But cURL proves only one scenario</h2>
+
+        <p>
+          A single cURL request answers a very specific question: what happens when I send this exact input? If the response is correct, that scenario works. That is useful, but it is also extremely narrow.
+        </p>
+
+        <p>
+          Real systems do not send perfect input forever. Fields go missing. Types change. Values exceed limits. Payloads get corrupted. Headers are forgotten. Tokens expire. Clients behave in ways nobody planned for.
+        </p>
+
+        <p>
+          None of that is covered by a single clean request. And manually writing dozens of variations in cURL quickly becomes slow, repetitive, and easy to skip.
+        </p>
+
+        <h2>Rentgen expands the cURL into reality</h2>
+
+        <p>
+          Rentgen starts exactly where cURL stops. You take a working request, paste it in, and let Rentgen generate variations automatically. Missing fields, wrong data types, boundary values, whitespace issues, malformed payloads — the kind of input that eventually hits production whether you like it or not.
+        </p>
+
+        <p>
+          This is not about replacing cURL. It is about extending its value. cURL gives you a precise starting point. Rentgen turns that starting point into a broader test of how the API behaves outside ideal conditions.
+        </p>
+
+        <p>
+          Some APIs handle this well and return consistent, predictable responses. Others reveal gaps: unexpected 500 errors, inconsistent validation, confusing status codes, or behavior that makes debugging painful later.
+        </p>
+
+        <h2>The workflow is sequential, not competitive</h2>
+
+        <p>
+          In practice, cURL and Rentgen work best together. First, you capture or write a working cURL request. That gives you a clean, reproducible baseline. Then you pass that request into Rentgen to see how the API behaves when the input is no longer controlled.
+        </p>
+
+        <p>
+          This sequence matters. Without cURL, you do not have a reliable starting point. Without Rentgen, you only understand one narrow slice of API behavior.
+        </p>
+
+        <h2>Why this matters before automation</h2>
+
+        <p>
+          Many teams jump straight from a working request into automated tests. They build assertions around the happy path and assume the endpoint is covered. The problem is that automation often reflects what was tested, not what was missed.
+        </p>
+
+        <p>
+          Rentgen shifts that starting point. It gives you a quick view of how the API behaves under imperfect input before you commit to writing long-term tests. That means your automation is based on observed behavior, not assumptions.
+        </p>
+
+        <h2>Two tools, one foundation</h2>
+
+        <p>
+          cURL remains one of the most reliable ways to interact with APIs. It is simple, portable, and precise. Rentgen does not replace that. It builds on top of it.
+        </p>
+
+        <p>
+          If cURL is how you prove a request works, Rentgen is how you find out what that proof did not cover. Same request. Different purpose. And together, a much clearer picture of how your API actually behaves.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
