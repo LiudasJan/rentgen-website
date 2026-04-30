@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Swagger and Rentgen — what your API promises vs how it actually behaves</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Swagger-and-Rentgen-what-your-API-promises-vs-how-it-actually-behaves.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Swagger and Rentgen — what your API promises vs how it actually behaves</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Swagger and Rentgen are often mentioned together because both sit close to APIs. But they do completely different jobs. Swagger defines how an API is supposed to behave. Rentgen shows how it actually behaves when real input hits it.
+        </p>
+
+        <p>
+          This is not a competition. Swagger is an industry standard. Rentgen exists because even well-defined APIs do not always behave the way their specification says they should.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Swagger defines the contract. Rentgen checks how the implementation survives reality.</figcaption>
+        </figure>
+
+        <h2>Swagger defines the contract</h2>
+
+        <p>
+          Swagger, or more precisely the OpenAPI Specification, is one of the most important tools in modern API development. It allows teams to describe endpoints, request formats, response schemas, authentication methods, and expected behavior in a structured, machine-readable way.
+        </p>
+
+        <p>
+          That specification becomes the source of truth. From it, teams generate documentation, client SDKs, server stubs, and even parts of their testing infrastructure. It is how teams align on what the API is supposed to do.
+        </p>
+
+        <p>
+          Swagger UI makes this even more practical by providing an interactive interface where developers can explore endpoints and send requests directly from the documentation. It turns the spec into something you can actually use.
+        </p>
+
+        <h2>The limitation is simple: specs are intentions</h2>
+
+        <p>
+          A Swagger file describes how the API should behave. But the real system is still code. And code does not always follow the specification perfectly.
+        </p>
+
+        <p>
+          Validation might be incomplete. Edge cases might not be covered. Error handling might not match documented responses. Fields marked as required might be accepted as optional. Or the API might return a 500 error instead of a clean 400 when something unexpected arrives.
+        </p>
+
+        <p>
+          None of this means Swagger is wrong. It means the implementation is imperfect. And that gap is exactly where bugs live.
+        </p>
+
+        <h2>Rentgen tests the gap between spec and reality</h2>
+
+        <p>
+          Rentgen does not read your OpenAPI spec. It does not care what the API is supposed to do. It takes a real request — usually copied as cURL from Swagger UI, logs, or another tool — and tests how the backend behaves when that request is no longer perfect.
+        </p>
+
+        <p>
+          Missing fields, wrong types, boundary values, whitespace issues, malformed payloads, unexpected headers — Rentgen generates these variations automatically and observes the responses. Not the documented responses. The actual ones.
+        </p>
+
+        <p>
+          This is where interesting things happen. APIs that look clean in Swagger can return inconsistent status codes, accept invalid input, or fail with unexpected 500 errors when pushed outside the happy path.
+        </p>
+
+        <h2>Specification vs behavior</h2>
+
+        <p>
+          Swagger answers the question: “What should this API do?” Rentgen answers a different one: “What does this API do when things go wrong?”
+        </p>
+
+        <p>
+          Both questions matter. Without Swagger, teams lack structure and shared understanding. Without testing real behavior, teams risk trusting a specification that the system does not fully respect.
+        </p>
+
+        <h2>A workflow that makes sense</h2>
+
+        <p>
+          Start with Swagger when designing and understanding the API. Define endpoints, data models, and expected responses. Use Swagger UI to explore and confirm that the endpoint works for valid input.
+        </p>
+
+        <p>
+          Then take a real request from Swagger and run it through Rentgen. That is where the clean, documented scenario turns into a broader test of how the API behaves under imperfect conditions.
+        </p>
+
+        <p>
+          Fix the obvious gaps early. Only then move to formal testing, automation, and CI/CD pipelines. This way your test suites are based on observed behavior, not just documented expectations.
+        </p>
+
+        <h2>They are not alternatives</h2>
+
+        <p>
+          Swagger is a foundation of API development. It defines the contract and enables tooling around it. Rentgen is a focused tool that helps validate how well that contract is actually implemented.
+        </p>
+
+        <p>
+          Comparing them directly does not make sense. One defines the system. The other challenges it.
+        </p>
+
+        <p>
+          Swagger tells you what your API promises. Rentgen shows you how easily that promise breaks under real input. Same API, different perspective, both necessary.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
