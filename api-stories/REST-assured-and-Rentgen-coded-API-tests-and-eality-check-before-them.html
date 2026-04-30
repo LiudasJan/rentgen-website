@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>REST-assured and Rentgen — coded API tests and the reality check before them</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/REST-assured-and-Rentgen-coded-API-tests-and-eality-check-before-them.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>REST-assured and Rentgen — coded API tests and the reality check before them</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          REST-assured and Rentgen both belong in API testing, but they are not doing the same job. REST-assured is a Java library for writing proper automated API tests. Rentgen is a local-first API hygiene scanner that helps you discover what should probably be tested before you spend time writing those tests.
+        </p>
+
+        <p>
+          That distinction is important. REST-assured is for teams that already know what they want to verify. Rentgen is for the earlier moment when you have a working request, but you do not yet know how the API behaves when the input becomes messy.
+        </p>
+
+        <p>
+          This is not a “which one is better” comparison. REST-assured gives you control. Rentgen gives you fast discovery. Good API testing needs both.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>REST-assured turns known behavior into automated tests. Rentgen helps discover behavior worth testing.</figcaption>
+        </figure>
+
+        <h2>REST-assured is for serious API automation</h2>
+
+        <p>
+          REST-assured is a strong choice when your team works in Java and wants full control over API test automation. You can build requests, manage authentication, prepare test data, write assertions, integrate with JUnit or TestNG, and run everything inside your CI/CD pipeline.
+        </p>
+
+        <p>
+          This is where proper regression testing lives. You know the endpoint, you know the expected behavior, and you write tests that enforce it over time. When the API changes unexpectedly, the tests fail. That is the point.
+        </p>
+
+        <p>
+          But REST-assured does not decide what should be tested. It gives you the power to write the tests, not the thinking behind them. If nobody writes a case for a missing field, wrong data type, invalid enum, oversized value, or malformed payload, that case does not exist in your suite.
+        </p>
+
+        <h2>Rentgen helps before the test suite exists</h2>
+
+        <p>
+          Rentgen starts from a different place. You do not need a Java project, a test framework, fixtures, assertions, or CI configuration. You take one working cURL request, paste it into Rentgen, and let it generate a broad set of variations automatically.
+        </p>
+
+        <p>
+          Missing fields, invalid values, boundary checks, whitespace issues, wrong casing, malformed JSON, unsupported methods, authentication edge cases — Rentgen explores these quickly and shows how the API actually responds.
+        </p>
+
+        <p>
+          The goal is not to replace coded automation. The goal is to reduce guessing before you write it. Instead of sitting down and inventing negative cases from memory, you can first see where the endpoint is fragile.
+        </p>
+
+        <h2>Discovery is not regression</h2>
+
+        <p>
+          This is the cleanest way to separate them. Rentgen is useful for discovery. REST-assured is useful for regression.
+        </p>
+
+        <p>
+          Rentgen helps you find behavior: what breaks, what is inconsistent, what returns 500, what accepts invalid input, what has unclear error handling. REST-assured helps you lock important behavior down so it stays fixed.
+        </p>
+
+        <p>
+          If Rentgen finds that an endpoint returns 500 when a required field is missing, that is useful discovery. After the bug is fixed, REST-assured is a good place to add a regression test that proves the API now returns the correct 4xx response and keeps doing so.
+        </p>
+
+        <h2>Why writing tests too early can be a problem</h2>
+
+        <p>
+          Many teams automate the first clean scenario they see. The request works, the response looks correct, and the team writes a nice REST-assured test around it. Technically, that is automation. Practically, it may only be automating the happy path.
+        </p>
+
+        <p>
+          The risk is false confidence. A test suite can look professional while still missing the boring cases that break real systems: empty strings, unexpected nulls, broken tokens, incorrect types, invalid enum values, extra fields, missing fields, and payloads that are too large.
+        </p>
+
+        <p>
+          Rentgen helps expose those cases early. Then REST-assured can turn the important ones into stable, maintainable automated tests.
+        </p>
+
+        <h2>A workflow that makes sense</h2>
+
+        <p>
+          A practical workflow is simple. First, build the endpoint and confirm one valid request works. Then run that request through Rentgen to understand how the API behaves outside the happy path. Fix the obvious issues.
+        </p>
+
+        <p>
+          After that, use REST-assured to automate the behavior that matters long term. Write clear assertions. Add the tests to CI. Make sure fixed bugs do not come back. That is where REST-assured shines.
+        </p>
+
+        <p>
+          This sequence avoids a common mistake: building automation before understanding the API properly. Rentgen gives you a better starting point. REST-assured gives you the long-term safety net.
+        </p>
+
+        <h2>No conflict required</h2>
+
+        <p>
+          REST-assured is not weaker because it requires code. That is its strength. Code gives you flexibility, structure, and deep integration with engineering workflows.
+        </p>
+
+        <p>
+          Rentgen is not better because it requires less setup. It simply solves a different problem. It gives fast visibility before the formal test suite exists.
+        </p>
+
+        <p>
+          Use Rentgen to discover how your API behaves under imperfect input. Use REST-assured to automate the behaviors you decide must never break again. Same API testing lifecycle, different stages, both useful.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
