@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HTTPie and Rentgen — first talk to the API, then make it uncomfortable</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/HTTPie-and-Rentgen-first-talk-to-the-API-then-make-it-uncomfortable.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>HTTPie and Rentgen — first talk to the API, then make it uncomfortable</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          HTTPie and Rentgen are easy to mention in the same sentence because both can start from a single API request. But they are not trying to win the same fight. HTTPie is built to make talking to APIs pleasant. Rentgen is built for the moment after that conversation works, when you need to find out whether the API can handle anything less polite.
+        </p>
+
+        <p>
+          HTTPie is a human-friendly HTTP client for developers. It gives you a clean command-line syntax, formatted output, JSON support, authentication, headers, sessions, file uploads, and a desktop interface if you do not want to stay in the terminal. It exists because raw cURL can be miserable to read, write, escape, copy, and explain to another human being.
+        </p>
+
+        <p>
+          Rentgen solves a different problem. It does not try to make manual API calls nicer. It takes a working request and turns it into a pressure test. Missing fields, wrong types, boundary values, whitespace, invalid enums, malformed payloads, strange status codes, broken validation, backend 500s — that is Rentgen territory.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>HTTPie helps you create a clean request. Rentgen checks what happens when the request stops being clean.</figcaption>
+        </figure>
+
+        <h2>HTTPie is for making API work readable</h2>
+
+        <p>
+          There is a reason developers like HTTPie. It makes HTTP requests feel less like punishment. Instead of wrestling with a long cURL command full of escaping, quotes, headers, and unreadable JSON, you can write something that looks closer to the intention of the request. Send this method. Add this field. Use this token. Show me the response.
+        </p>
+
+        <p>
+          That is useful in real development. You are building an endpoint, checking a response, debugging authentication, trying a payload, or quickly proving that a service is alive. HTTPie is good at that because it keeps the request visible and understandable. It is not trying to hide HTTP behind a giant platform. It makes HTTP easier to use.
+        </p>
+
+        <p>
+          The important part is that HTTPie still sends what you ask it to send. If you create one valid request, it sends one valid request. If you want ten negative cases, you need to create them. If you want to test missing fields, invalid values, wrong casing, bad JSON, empty strings, oversized payloads, or weird headers, that thinking still has to come from you.
+        </p>
+
+        <h2>The first clean request is not testing</h2>
+
+        <p>
+          A clean request is a starting point, not evidence that the API is ready. It proves that the endpoint can handle the request you wanted it to handle. That is useful, but it is also dangerously small. Production does not only send the request you wanted.
+        </p>
+
+        <p>
+          Real APIs receive old clients, broken frontends, copied values, expired tokens, empty strings, invalid enums, missing properties, unexpected nulls, numbers as strings, strings as numbers, and payloads that look like they were assembled during a fire drill. Some APIs handle this properly. Others panic, leak strange responses, return 500, or give clients error messages that explain absolutely nothing.
+        </p>
+
+        <p>
+          This is the gap Rentgen is built for. You already have a request that works. Good. Now let us see what the backend does when the request becomes messy.
+        </p>
+
+        <h2>Rentgen starts where manual comfort ends</h2>
+
+        <p>
+          Rentgen takes a single real request, usually copied as cURL, and generates a wide set of test variations automatically. It is not asking you to sit there and invent every boring negative case by hand. It assumes those cases matter because, in real systems, they eventually do.
+        </p>
+
+        <p>
+          This is not about replacing HTTPie. It is about changing the question. With HTTPie, the question is usually “can I send this request and see the response?” With Rentgen, the question becomes “what happens when this request is damaged in predictable ways?”
+        </p>
+
+        <p>
+          That difference sounds small until you see the results. A backend that looks perfectly fine under one valid request may start returning inconsistent status codes, accepting invalid values, crashing on malformed payloads, or treating missing authentication in a way that makes no sense. These are not theoretical bugs. They are the dull, ordinary API problems that teams keep rediscovering late.
+        </p>
+
+        <h2>One is a conversation tool. The other is a stress tool.</h2>
+
+        <p>
+          HTTPie is excellent when you want to talk to the API. You write a request, send it, inspect the response, adjust the payload, and keep moving. It is fast, readable, and pleasant. That matters because developers spend a lot of time doing exactly this.
+        </p>
+
+        <p>
+          Rentgen is useful when the conversation is over and the interrogation begins. It does not care that the happy path worked. It wants to know whether the API validates input consistently, rejects bad data safely, returns useful errors, and avoids server-side crashes when clients behave badly.
+        </p>
+
+        <p>
+          That is why the tools can sit next to each other without competing. HTTPie helps you build the request. Rentgen helps you question the backend behind that request.
+        </p>
+
+        <h2>A practical workflow</h2>
+
+        <p>
+          Start with HTTPie when you are developing or debugging. Build the request in a way that is readable. Check the response. Confirm the endpoint does what you expect under normal conditions. Use the terminal or desktop client, whichever fits your workflow.
+        </p>
+
+        <p>
+          Once the request works, export or copy it as cURL and run it through Rentgen. That is where the work changes from manual exploration to automatic API hygiene testing. Rentgen expands the request into dozens or hundreds of variations and shows how the API behaves when the input stops being ideal.
+        </p>
+
+        <p>
+          After that, you have better information. You know which edge cases are handled well, which ones are broken, which responses are inconsistent, and which issues deserve proper automated regression tests later.
+        </p>
+
+        <h2>Why this matters before QA and automation</h2>
+
+        <p>
+          Many teams send an endpoint to QA after someone manually checked it with a clean request. Then QA finds the obvious negative cases. Then developers fix them. Then automation gets updated. Then more edge cases appear later. This is a slow way to discover predictable problems.
+        </p>
+
+        <p>
+          Rentgen moves some of that discovery earlier. It does not replace QA. It does not replace HTTP clients. It does not replace proper automation. It simply gives developers and testers a fast local reality check before the API becomes someone else’s problem.
+        </p>
+
+        <p>
+          That is the category difference. HTTPie makes API interaction more human. Rentgen makes API assumptions less comfortable.
+        </p>
+
+        <h2>So where does each tool fit?</h2>
+
+        <p>
+          Use HTTPie when you want a clean, readable way to send requests, debug APIs, inspect responses, and work quickly from the terminal or desktop. It is a strong tool for API exploration and everyday development.
+        </p>
+
+        <p>
+          Use Rentgen when you already have a working request and want to know what that request did not prove. It belongs before formal test automation, before CI quality gates, and before the team decides that one happy-path response means the endpoint is safe.
+        </p>
+
+        <p>
+          HTTPie helps you ask the API a clear question. Rentgen takes that question, bends it, damages it, removes pieces from it, and watches whether the backend still behaves like a grown-up system. Same API. Different job. No conflict required.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
