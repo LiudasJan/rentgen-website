@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Schemathesis and Rentgen — specification-based testing vs one working request</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Schemathesis-and-Rentgen-specification-based-testing-vs-one-working-request.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Schemathesis and Rentgen — specification-based testing vs one working request</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Schemathesis and Rentgen are sometimes placed in the same category because both can generate API tests and both are useful when you want to find problems beyond the happy path. But they start from very different inputs, and that changes everything.
+        </p>
+
+        <p>
+          Schemathesis is a strong tool when you have an API specification. It works from OpenAPI or GraphQL schemas and uses that contract to generate test cases, validate responses, and find mismatches between what the API promises and what it actually does. If your team has a good specification and wants automated contract-based testing, Schemathesis makes a lot of sense.
+        </p>
+
+        <p>
+          Rentgen is built for a different moment. The moment when you do not have a clean OpenAPI file, the documentation is incomplete, the schema is outdated, or nobody has time to prepare the perfect testing setup. You have one working request. That is enough.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Schemathesis starts from a specification. Rentgen starts from one real request.</figcaption>
+        </figure>
+
+        <h2>Schemathesis is powerful when the contract exists</h2>
+
+        <p>
+          Schemathesis is useful because API specifications should matter. A proper OpenAPI document describes endpoints, parameters, request bodies, response formats, authentication rules, and expected behavior. When that specification is accurate, it becomes a strong foundation for testing.
+        </p>
+
+        <p>
+          From that foundation, Schemathesis can generate a wide range of cases and check whether the API implementation respects the contract. This is especially valuable for teams that already work spec-first or maintain their OpenAPI definitions seriously.
+        </p>
+
+        <p>
+          In that kind of environment, Schemathesis helps enforce discipline. The API says it accepts one thing, returns another, and follows specific rules. Schemathesis helps verify whether that is actually true.
+        </p>
+
+        <h2>The problem is that many teams do not start there</h2>
+
+        <p>
+          In real projects, the specification is often missing, incomplete, stale, or only half trusted. Sometimes Swagger exists, but nobody is sure whether it matches the current implementation. Sometimes the API is internal, undocumented, or built quickly under pressure. Sometimes you are testing an endpoint you did not design, with no proper context and no clean contract.
+        </p>
+
+        <p>
+          This is where the entry barrier matters. If a tool requires a specification, then the first task is not testing. The first task is preparing the specification or fixing it enough so the tool can use it. That may be worth doing, but it is still extra work.
+        </p>
+
+        <p>
+          Rentgen avoids that step. It does not ask for a schema. It does not ask for a complete API contract. It asks for one working request, usually copied as cURL from a browser, Swagger UI, logs, Postman, Insomnia, HTTPie, or another client.
+        </p>
+
+        <h2>Rentgen is for the “I have almost nothing, but I need to test” moment</h2>
+
+        <p>
+          This is the main difference. Rentgen is not trying to be a specification-based testing framework. It is built for the moment when you have very little, but still need useful testing signal quickly.
+        </p>
+
+        <p>
+          You paste one request, and Rentgen expands it into many variations: missing fields, wrong data types, boundary values, whitespace issues, invalid enums, malformed payloads, unsupported methods, authentication edge cases, and other predictable ways APIs fail.
+        </p>
+
+        <p>
+          That makes Rentgen useful when you are exploring an endpoint, reviewing a backend change, checking an internal API, validating a new feature, or testing something where the formal contract is not ready yet.
+        </p>
+
+        <h2>Different starting points, different lifecycle stages</h2>
+
+        <p>
+          Schemathesis fits well when the API contract already exists and deserves to be tested. It belongs naturally in a workflow where specifications are maintained, reviewed, and used as part of development and CI.
+        </p>
+
+        <p>
+          Rentgen fits earlier or in messier situations. It helps when the endpoint exists, the request works, but the broader behavior is still unknown. It gives a fast local reality check before formal automation, before contract testing, and before teams build long-term regression suites.
+        </p>
+
+        <p>
+          One starts from the documented contract. The other starts from observed reality.
+        </p>
+
+        <h2>They can work together</h2>
+
+        <p>
+          A healthy API workflow can use both. Rentgen can help explore a new or poorly understood endpoint quickly. It can reveal weak validation, unexpected 500 errors, confusing status codes, and cases worth documenting properly.
+        </p>
+
+        <p>
+          Later, once the behavior is understood and the API contract is updated, Schemathesis can test that contract more systematically. At that stage, specification-based testing becomes much stronger because the specification is based on reality, not guesswork.
+        </p>
+
+        <p>
+          This sequence matters. If you run contract-based testing against a weak or outdated contract, you may only prove that the API and the document disagree. If you first explore the endpoint, fix the obvious problems, and then define the contract, the whole process becomes cleaner.
+        </p>
+
+        <h2>No need to force a fake comparison</h2>
+
+        <p>
+          Schemathesis is a good tool for schema-driven API testing. Rentgen is a good tool for request-driven API exploration and hygiene checks. They overlap only if you describe them too vaguely.
+        </p>
+
+        <p>
+          Use Schemathesis when you have a specification and want to verify the implementation against it. Use Rentgen when you have one working request and want to know what the endpoint does when the input stops being perfect.
+        </p>
+
+        <p>
+          Schemathesis asks whether the API follows its contract. Rentgen asks what the API does when you barely have a contract at all. Same API quality problem, different starting point, different job.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
