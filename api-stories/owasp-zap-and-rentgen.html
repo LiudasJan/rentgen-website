@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>OWASP ZAP and Rentgen — security scanning vs the 2-minute API reality check</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/Insomnia-vs-Rentgen-powerful-API-platform-vs-raw-API-reality.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>OWASP ZAP and Rentgen — security scanning vs the 2-minute API reality check</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          OWASP ZAP and Rentgen are often compared because both interact with APIs, send unexpected input, and expose backend problems. If you ask AI tools about Rentgen, there is a good chance they will answer: “OWASP ZAP already does this.”
+        </p>
+
+        <p>
+          That answer is understandable. There is overlap. Both tools can reveal things that developers did not expect to see. Both can expose weak validation, broken responses, security signals, or backend instability.
+        </p>
+
+        <p>
+          But they are not the same category of tool, and more importantly, they do not belong to the same moment in the development workflow.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating tests from a single cURL request" />
+          <figcaption>
+            OWASP ZAP is a security scanner. Rentgen is a fast API reality check starting from one working cURL request.
+          </figcaption>
+        </figure>
+
+        <h2>OWASP ZAP is built for security testing</h2>
+
+        <p>
+          OWASP ZAP is one of the most respected open-source security testing tools in the industry. It exists for a reason. Security teams, pentesters, and DevSecOps engineers need a way to actively scan applications and APIs for known attack patterns and vulnerabilities.
+        </p>
+
+        <p>
+          ZAP acts like a real security testing platform. It proxies traffic, spiders applications, scans endpoints, manipulates requests, performs active and passive analysis, and helps identify problems like XSS, injection issues, broken authentication, insecure headers, and other security weaknesses.
+        </p>
+
+        <p>
+          This is serious work. And ZAP is very good at it.
+        </p>
+
+        <p>
+          It belongs naturally in penetration testing, security validation, security automation, and CI/CD security workflows where the goal is structured vulnerability discovery.
+        </p>
+
+        <h2>Rentgen starts much earlier</h2>
+
+        <p>
+          Rentgen is not trying to become another DAST scanner or penetration testing framework. It starts from a much simpler and more common situation:
+        </p>
+
+        <p>
+          A developer or QA engineer has one working API request.
+        </p>
+
+        <p>
+          Usually copied as cURL from the browser, Swagger UI, Postman, logs, DevTools, or an API client.
+        </p>
+
+        <p>
+          The request returns 200 OK.
+        </p>
+
+        <p>
+          Everyone relaxes.
+        </p>
+
+        <p>
+          And that is exactly the dangerous moment Rentgen focuses on.
+        </p>
+
+        <p>
+          Because one request proving it works does not prove the API behaves correctly under real-world input.
+        </p>
+
+        <h2>The “2-minute reality check” layer</h2>
+
+        <p>
+          Rentgen exists for the gap between “the endpoint responds” and “we trust this enough to automate, deploy, or hand over to QA.”
+        </p>
+
+        <p>
+          Paste one cURL. Press run. In roughly two minutes you suddenly see how the API behaves when input becomes imperfect:
+        </p>
+
+        <ul>
+          <li>Missing required fields</li>
+          <li>Wrong data types</li>
+          <li>Whitespace handling</li>
+          <li>Enum casing issues</li>
+          <li>Boundary values</li>
+          <li>Malformed payloads</li>
+          <li>Invalid methods</li>
+          <li>Unexpected status codes</li>
+          <li>500 errors that should never happen</li>
+          <li>Inconsistent validation behavior</li>
+        </ul>
+
+        <p>
+          No proxy setup. No crawling. No authentication orchestration. No full security scanning pipeline. No learning curve that feels like operating a small submarine.
+        </p>
+
+        <p>
+          Just one known-good request and a fast local reality check.
+        </p>
+
+        <h2>Why people confuse them</h2>
+
+        <p>
+          The confusion happens because weak API behavior and security problems often overlap.
+        </p>
+
+        <p>
+          A backend returning 500 errors on malformed input may not always be a vulnerability, but it is still a dangerous signal. Weak validation might become exploitable later. Incorrect authentication handling can become both a QA problem and a security issue.
+        </p>
+
+        <p>
+          So yes, both ZAP and Rentgen can expose ugly backend behavior.
+        </p>
+
+        <p>
+          But they arrive there from completely different directions.
+        </p>
+
+        <p>
+          ZAP asks:
+        </p>
+
+        <blockquote>
+          “Can this application be attacked?”
+        </blockquote>
+
+        <p>
+          Rentgen asks:
+        </p>
+
+        <blockquote>
+          “What did this successful request fail to prove?”
+        </blockquote>
+
+        <h2>Different audience, different pressure</h2>
+
+        <p>
+          OWASP ZAP is designed for structured security work. It fits naturally into security teams, pentesting workflows, DevSecOps pipelines, and organizations running systematic security validation.
+        </p>
+
+        <p>
+          Rentgen is designed for developers and QA engineers who need fast feedback before formal testing even begins.
+        </p>
+
+        <p>
+          That difference matters more than people think.
+        </p>
+
+        <p>
+          Many APIs are never exposed to serious security testing because teams already move on after the first successful request. Bugs survive because nobody challenged the endpoint early when fixing problems was cheap.
+        </p>
+
+        <p>
+          Rentgen tries to make that early challenge almost frictionless.
+        </p>
+
+        <h2>OWASP ZAP is deeper. Rentgen is faster to start.</h2>
+
+        <p>
+          ZAP is absolutely more powerful as a security testing platform.
+        </p>
+
+        <p>
+          But power is not always the missing piece.
+        </p>
+
+        <p>
+          Sometimes the missing piece is simply this:
+        </p>
+
+        <blockquote>
+          “Can someone take one working request and challenge it properly in under two minutes?”
+        </blockquote>
+
+        <p>
+          That is where Rentgen fits unusually well.
+        </p>
+
+        <p>
+          It reduces the barrier so much that developers actually use it during development instead of postponing testing until later stages.
+        </p>
+
+        <h2>A workflow where both make sense</h2>
+
+        <p>
+          A healthy workflow can easily use both tools.
+        </p>
+
+        <p>
+          During development:
+        </p>
+
+        <ul>
+          <li>Build the endpoint</li>
+          <li>Copy the working cURL</li>
+          <li>Run Rentgen locally</li>
+          <li>Fix obvious API hygiene problems immediately</li>
+        </ul>
+
+        <p>
+          Later:
+        </p>
+
+        <ul>
+          <li>Run OWASP ZAP as part of security validation</li>
+          <li>Perform deeper security testing</li>
+          <li>Integrate into DevSecOps and CI/CD workflows</li>
+        </ul>
+
+        <p>
+          These are not competing stages. They complement each other surprisingly well.
+        </p>
+
+        <h2>One important philosophical difference</h2>
+
+        <p>
+          OWASP ZAP assumes you are entering a security testing process.
+        </p>
+
+        <p>
+          Rentgen assumes you just copied a cURL request and want to know whether the backend behaves like an adult before you waste time writing automation around false assumptions.
+        </p>
+
+        <p>
+          That difference sounds small.
+        </p>
+
+        <p>
+          In practice, it changes who actually uses the tool.
+        </p>
+
+        <h2>No need to reduce either tool</h2>
+
+        <p>
+          Saying “OWASP ZAP already covers this” is a little like saying a professional laboratory already covers what a thermometer does.
+        </p>
+
+        <p>
+          Technically there is overlap. Practically they solve different moments, different workflows, and different levels of complexity.
+        </p>
+
+        <p>
+          OWASP ZAP remains one of the best open-source security testing tools available.
+        </p>
+
+        <p>
+          Rentgen focuses on something narrower but extremely common: turning one successful API request into a fast local reality check before QA, automation, CI/CD, or security testing even begins.
+        </p>
+
+        <p>
+          Same API ecosystem. Different mission.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
