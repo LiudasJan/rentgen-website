@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StackHawk and Rentgen — API security scanning and API hygiene before automation</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/cURL-and-Rentgen-one-proves-it-works-the-other-proves-what-breaks copy.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+  <article class="container article">
+    <header class="article-header">
+      <h1>StackHawk and Rentgen — API security scanning and API hygiene before automation</h1>
+      <p class="article-meta">Rentgen · API Stories</p>
+    </header>
+
+    <div class="article-content">
+      <p>
+        StackHawk and Rentgen can look similar from a distance because both deal with APIs, bad input, security signals, and backend behavior. That is enough for people to say “StackHawk can do that too.” And in some areas, there is overlap. Both tools can help expose weaknesses before they become production problems.
+      </p>
+
+      <p>
+        But overlap does not mean they are the same tool. StackHawk is an application and API security testing platform built around security scanning, DAST, developer workflows, and finding exploitable weaknesses in running applications. Rentgen is a local-first API hygiene scanner built for the earlier moment when a developer or QA engineer has one working request and wants a fast reality check before formal automation starts.
+      </p>
+
+      <p>
+        StackHawk is closer to security testing. Rentgen is closer to pre-testing and behavioral API hygiene. They may touch similar endpoints, but they ask different questions.
+      </p>
+
+      <figure>
+        <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+        <figcaption>StackHawk looks for security weaknesses in running applications. Rentgen checks how one known API request behaves when input becomes imperfect.</figcaption>
+      </figure>
+
+      <h2>StackHawk is built for security scanning</h2>
+
+      <p>
+        StackHawk fits naturally into application security and DevSecOps workflows. It is used to scan running web applications and APIs for security issues, often as part of development pipelines. The goal is to help teams find vulnerabilities earlier, before security testing becomes a late-stage surprise.
+      </p>
+
+      <p>
+        That is valuable work. Modern teams cannot treat security as something that happens only at the end. APIs expose business logic, data, authentication, authorization, and integrations. A security scanner that helps developers find problems earlier has a clear place in the software lifecycle.
+      </p>
+
+      <p>
+        StackHawk’s strength is that it approaches the system from a security point of view. It is concerned with weaknesses, attack surface, exploitable behavior, and security findings that teams need to triage and fix.
+      </p>
+
+      <h2>Rentgen starts from a smaller but very common problem</h2>
+
+      <p>
+        Rentgen does not try to be a full application security platform. It starts from a simpler situation that happens every day: someone has built or changed an API endpoint, sent one valid request, received a good response, and now wants to know whether the endpoint is actually robust.
+      </p>
+
+      <p>
+        There may be no test suite yet. No CI setup. No security scanning pipeline. No complete OpenAPI specification. Sometimes there is not even proper documentation. There is just one working request, usually copied as cURL from a browser, API client, Swagger UI, logs, or debugging session.
+      </p>
+
+      <p>
+        Rentgen takes that request and expands it into many checks: missing fields, wrong data types, boundary values, whitespace issues, invalid enums, malformed payloads, headers, unsupported methods, and response behavior that often reveals weak validation or backend assumptions.
+      </p>
+
+      <h2>Where they overlap</h2>
+
+      <p>
+        There is some overlap because bad input can produce both quality issues and security signals. A malformed payload that causes a 500 error is not always a vulnerability, but it is still a backend weakness. Missing validation might be a boring QA issue in one endpoint and a security risk in another. Incorrect authentication behavior may belong to both worlds.
+      </p>
+
+      <p>
+        This is why people can look at StackHawk and Rentgen and see a shared theme: both are interested in what happens when the API is not treated gently.
+      </p>
+
+      <p>
+        But the intent is different. StackHawk is looking through the lens of security testing. Rentgen is looking through the lens of API behavior and hygiene before automation. One asks “is this vulnerable?” The other asks “does this endpoint behave safely and predictably when input is wrong?”
+      </p>
+
+      <h2>The difference is depth vs entry point</h2>
+
+      <p>
+        StackHawk is stronger when a team wants structured security scanning as part of a broader application security process. It belongs in environments where findings need to be managed, vulnerabilities need to be tracked, and security testing becomes part of the engineering workflow.
+      </p>
+
+      <p>
+        Rentgen is strongest when the entry point must be extremely low. Paste one working cURL and run. No scripts. No full security program. No large setup. Just a fast local check that helps a developer or QA engineer understand how the endpoint behaves before deeper testing begins.
+      </p>
+
+      <p>
+        That low entry barrier matters. Many API problems are found too late not because teams lack advanced tools, but because the first simple check never happened. Rentgen focuses exactly on that moment.
+      </p>
+
+      <h2>Different place in the lifecycle</h2>
+
+      <p>
+        StackHawk fits well when the application or API is ready to be scanned as part of a security workflow. It can support DevSecOps, CI/CD, vulnerability discovery, and security regression around running applications.
+      </p>
+
+      <p>
+        Rentgen fits earlier, especially when the endpoint has just been built or changed. It helps catch obvious input handling issues before QA handoff, before automated tests are written, before CI gates are created, and before security teams have to deal with avoidable noise.
+      </p>
+
+      <p>
+        In that sense, Rentgen can even make later security scanning cleaner. If the basic API hygiene problems are fixed early, security tools can focus on more meaningful findings instead of obvious validation mistakes.
+      </p>
+
+      <h2>A workflow that uses both</h2>
+
+      <p>
+        A practical workflow can use both tools without forcing a fake choice. During early development, run Rentgen from one working cURL to expose weak validation, inconsistent responses, 500 errors, malformed payload handling, and status-code problems.
+      </p>
+
+      <p>
+        Once the application is more stable and security testing needs to become systematic, use StackHawk to scan the running application or API from a security perspective. That is where security findings, attack patterns, and DevSecOps workflows become more important.
+      </p>
+
+      <p>
+        Rentgen helps clean the obvious API behavior problems early. StackHawk helps test security posture more broadly and repeatedly.
+      </p>
+
+      <h2>No need to reduce either tool</h2>
+
+      <p>
+        StackHawk should not be described as “just another API tester”. It is a security platform with a clear place in modern development. Rentgen should not be dismissed as redundant just because security scanners can also find some input-related problems.
+      </p>
+
+      <p>
+        The important distinction is where each tool starts. StackHawk starts from application security scanning. Rentgen starts from one working request and the question every developer should ask before moving on: what did this request not prove?
+      </p>
+
+      <p>
+        Use StackHawk when you need structured application and API security scanning. Use Rentgen when you need a fast local API reality check before automation, QA, CI, or deeper security work begins.
+      </p>
+
+      <p>
+        Same API world, different angle. StackHawk helps find security weaknesses. Rentgen helps expose fragile API behavior before it hardens into your test suite or reaches production.
+      </p>
+    </div>
+  </article>
+</main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
