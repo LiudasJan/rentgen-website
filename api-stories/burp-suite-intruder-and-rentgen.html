@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Burp Suite Intruder and Rentgen — custom attack tooling vs fast API reality checks</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/burp-suite-intruder-and-rentgen.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Burp Suite Intruder and Rentgen — custom attack tooling vs fast API reality checks</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Burp Suite Intruder and Rentgen can look similar if you reduce both tools to “they send modified HTTP requests and see what happens.” But that is too shallow. In real use, they live in different parts of the software and security testing lifecycle, and they are built for different types of users, different levels of control, and different goals.
+        </p>
+
+        <p>
+          Burp Suite Intruder is a serious pentesting tool. No question about that. It is one of the classic tools security testers use when they want to take a captured HTTP request, define payload positions, choose payload sets, tune attack types, filter responses, and look for interesting behavior. It gives the tester control, and that control is exactly why people use it.
+        </p>
+
+        <p>
+          Rentgen is not trying to be Burp Intruder. Rentgen is built for a different moment: a developer, QA engineer, or security-minded tester has one working API request, usually copied as cURL, and wants a fast local check of how the backend behaves when that request stops being perfect.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Burp Suite Intruder gives deep manual control over attacks. Rentgen gives a fast structured API reality check from one working cURL.</figcaption>
+        </figure>
+
+        <h2>Burp Suite Intruder is built for controlled attacks</h2>
+
+        <p>
+          Intruder is powerful because it lets the tester decide exactly what to attack and how. You capture a request, mark positions, choose payloads, configure attack types, run the attack, and then analyze responses. If you know what you are doing, that level of control is extremely valuable.
+        </p>
+
+        <p>
+          This is useful in real pentesting work. You may want to test authentication behavior, enumerate IDs, brute-force values, check parameter handling, try payload lists, fuzz specific positions, or compare response lengths, status codes, timings, and patterns. Intruder is designed for that kind of focused, manual, security-driven investigation.
+        </p>
+
+        <p>
+          But the important word is manual. Intruder does not magically know which fields matter, which API behavior is suspicious, or which business rules should be challenged. The tester designs the attack. That is not a weakness. That is the point of the tool.
+        </p>
+
+        <h2>Rentgen is built for the low-friction API gap</h2>
+
+        <p>
+          Rentgen starts from a much simpler situation. You have a working API request. Maybe it came from a browser, Swagger, Postman, Insomnia, HTTPie, logs, or DevTools. You copy it as cURL, paste it into Rentgen, and run a set of generated API hygiene checks.
+        </p>
+
+        <p>
+          No payload positions. No attack configuration. No wordlists. No grep rules. No decision about which field should be broken first. Rentgen takes the request structure and generates variations automatically: missing fields, wrong data types, boundary values, invalid enums, whitespace issues, malformed payloads, unsupported methods, header cases, and other predictable API edge cases.
+        </p>
+
+        <p>
+          The goal is not to replace expert security testing. The goal is to make the first serious API reality check so easy that teams actually do it before moving on.
+        </p>
+
+        <h2>Different goals: exploit discovery vs behavior discovery</h2>
+
+        <p>
+          Burp Suite Intruder is often used when the tester is actively hunting. The question is: can I find a bypass, a weak point, a hidden behavior, a vulnerable parameter, or a response difference that leads to something useful? That is a security testing mindset.
+        </p>
+
+        <p>
+          Rentgen asks a slightly different question: what did this successful API request fail to prove? Does the backend handle missing data safely? Does it reject bad input consistently? Does it return useful 4xx responses, or does it collapse into 500 errors? Does it behave predictably when the client sends something ugly?
+        </p>
+
+        <p>
+          These questions can overlap with security, but they are not identical. A 500 response from malformed input may not be an immediate exploit, but it is still a backend quality signal. Weak validation may be a QA issue today and a security issue tomorrow. Rentgen focuses on exposing that fragile behavior early.
+        </p>
+
+        <h2>Rentgen is not a toy either</h2>
+
+        <p>
+          It would be wrong to treat Rentgen as “just a simple negative test generator.” The simplicity is in the entry point, not in the value of the signal. One cURL request can generate a wide range of checks that quickly reveal how mature the backend really is.
+        </p>
+
+        <p>
+          Rentgen has been used against major real-world APIs, including ChatGPT’s own API, where issues were reported and fixed by OpenAI. That matters because the tool is not only useful on small internal endpoints or toy examples. The same boring edge cases that break small APIs can also expose problems in very mature systems.
+        </p>
+
+        <p>
+          The point is not that Rentgen is “stronger” than Burp Intruder. That would be the wrong comparison. The point is that Rentgen makes a different kind of check accessible much earlier in the lifecycle.
+        </p>
+
+        <h2>The lifecycle difference matters</h2>
+
+        <p>
+          Burp Suite Intruder usually appears when someone is already doing security testing. There is a target, a captured request, a hypothesis, a payload strategy, and a tester who knows what they are trying to prove or discover.
+        </p>
+
+        <p>
+          Rentgen appears earlier. The endpoint has just been built or changed. The team has one request that works. There may be no automation yet, no full test suite, no formal security testing, no detailed API spec, and no plan to spend an hour configuring a payload attack. There is just a simple need: check this API before we trust it.
+        </p>
+
+        <p>
+          That is where Rentgen fits. It lives in the gap between “the request works” and “we are ready to automate, ship, or test deeper.”
+        </p>
+
+        <h2>A workflow that uses both</h2>
+
+        <p>
+          A healthy workflow can use both tools. During development or QA preparation, Rentgen can take one working cURL request and quickly reveal obvious validation issues, malformed payload handling problems, method behavior, status-code inconsistencies, and backend crashes.
+        </p>
+
+        <p>
+          Later, when deeper security testing is needed, Burp Suite Intruder can be used for focused attacks, custom payloads, brute-force logic, parameter manipulation, authentication testing, and more advanced investigation. That is the correct place for its power.
+        </p>
+
+        <p>
+          In other words, Rentgen helps clean up obvious API behavior problems before they become noise in later testing. Intruder helps a skilled tester go deeper when the question is no longer “does this API behave safely under bad input?” but “can I break this system in a specific way?”
+        </p>
+
+        <h2>No need to force the comparison</h2>
+
+        <p>
+          Burp Suite Intruder is a powerful, respected tool for advanced web and API security testing. Rentgen is a focused local-first API hygiene scanner that starts from one working cURL and gives fast feedback before automation and deeper testing begin.
+        </p>
+
+        <p>
+          They are not competing for the same job. Intruder is about controlled attack construction. Rentgen is about instant API behavior discovery from a known request.
+        </p>
+
+        <p>
+          Use Burp Suite Intruder when you need deep manual control over payloads, positions, and attack strategy. Use Rentgen when you want a fast two-minute reality check before QA, automation, CI, or security testing starts building on assumptions.
+        </p>
+
+        <p>
+          Same HTTP world, different lifecycle stage, different mission.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
