@@ -5,8 +5,8 @@ Source for [rentgen.io](https://rentgen.io) — the landing page for **Rentgen**
 ## Links
 
 - **Live site:** https://rentgen.io
-- **Rentgen tool (GitHub):** https://github.com/LiudasJan/Rentgen
-- **Downloads:** https://github.com/LiudasJan/Rentgen/releases
+- **Rentgen tool (GitHub):** https://github.com/Rentgen-io/Rentgen
+- **Downloads:** https://github.com/Rentgen-io/Rentgen/releases
 
 ## What's in this repo
 
