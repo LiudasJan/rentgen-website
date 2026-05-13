@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Karate and Rentgen — coded API tests vs the reality check before them</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/karate-and-rentgen.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <article class="container article">
+      <header class="article-header">
+        <h1>Karate and Rentgen — coded API tests vs the reality check before them</h1>
+        <p class="article-meta">Rentgen · API Stories</p>
+      </header>
+
+      <div class="article-content">
+        <p>
+          Karate and Rentgen can look similar from a distance because both deal with API testing. Both send HTTP requests. Both can help teams catch problems before production. But once you look at where they fit in the development lifecycle, they are clearly solving different problems.
+        </p>
+
+        <p>
+          Karate is a mature API testing framework. It lets teams define requests, make assertions, reuse scenarios, manage environments, test REST, GraphQL, and SOAP services, and run tests as part of automated pipelines. It is a serious tool for teams that want structured, repeatable API test automation.
+        </p>
+
+        <p>
+          Rentgen is not trying to be Karate. Rentgen starts earlier, before the team has decided what deserves to become a long-term automated test. It takes one working cURL request and checks what happens when that request becomes imperfect.
+        </p>
+
+        <figure>
+          <img width="100%" src="../assets/api-stories/rentgen-import-curl-generate-and-run.gif" alt="Rentgen generating API tests from a cURL request" />
+          <figcaption>Karate helps you automate known API behavior. Rentgen helps you discover behavior before you decide what to automate.</figcaption>
+        </figure>
+
+        <h2>Karate is built for structured API automation</h2>
+
+        <p>
+          Karate is powerful because it gives teams a readable way to describe API tests. You can set a base URL, build paths, send request bodies, call HTTP methods, assert status codes, match response fields, reuse data, load files, handle authentication, and organize tests across environments. For teams that need repeatable API validation, this is exactly the kind of structure they need.
+        </p>
+
+        <p>
+          The value of Karate is not only that it can send requests. Many tools can do that. The value is that it turns API behavior into maintainable automated tests. When the expected behavior is known, Karate gives the team a clean way to enforce it over time.
+        </p>
+
+        <p>
+          That is especially useful when APIs become part of regression suites, CI/CD gates, release checks, and long-term quality strategy. At that stage, you want clear assertions, controlled data, predictable environments, and tests that fail loudly when behavior changes.
+        </p>
+
+        <h2>But automation still depends on what you choose to test</h2>
+
+        <p>
+          Karate gives you the framework, but it does not decide every edge case for you. If nobody writes a test for a missing field, that missing-field case is not tested. If nobody thinks about wrong data types, boundary values, malformed payloads, invalid enums, or whitespace handling, those paths remain invisible.
+        </p>
+
+        <p>
+          That is not a weakness of Karate. That is simply how test automation works. A framework executes the tests you create. It does not automatically know which assumptions in your API are fragile.
+        </p>
+
+        <p>
+          This is where many teams make the same mistake: they automate too early. One clean request works, the team writes a nice automated test around it, and suddenly there is a sense of coverage. But the test may only be protecting the happy path.
+        </p>
+
+        <h2>Rentgen is built for the moment before that</h2>
+
+        <p>
+          Rentgen focuses on the gap before formal automation. The endpoint exists. One request works. But the team still does not really know how the backend behaves when input is incomplete, strange, oversized, malformed, or simply not what the developer expected.
+        </p>
+
+        <p>
+          Instead of asking you to write a test suite first, Rentgen starts from one real cURL request. It expands that request into a set of API hygiene checks: missing fields, wrong data types, boundary values, invalid enum cases, trimming issues, malformed payloads, method behavior, headers, and response consistency.
+        </p>
+
+        <p>
+          The goal is not to replace Karate. The goal is to give you better information before you start writing Karate tests.
+        </p>
+
+        <h2>Discovery first, automation second</h2>
+
+        <p>
+          The cleanest way to separate Karate and Rentgen is this: Rentgen helps with discovery, Karate helps with automation.
+        </p>
+
+        <p>
+          Rentgen shows you how the API behaves outside the happy path. It may reveal a 500 error where a 400 should be returned. It may show that validation is inconsistent. It may expose that whitespace is handled in one field but not another. It may uncover that the endpoint accepts values it should reject.
+        </p>
+
+        <p>
+          Once you know which behaviors matter, Karate becomes a very good place to lock them down. If Rentgen exposes that missing authentication or malformed payloads produce the wrong status code, that finding can later become a proper Karate regression test.
+        </p>
+
+        <h2>A practical workflow</h2>
+
+        <p>
+          A realistic workflow is simple. First, build or change the endpoint. Then confirm that one valid request works. After that, run the request through Rentgen to understand how the API behaves under imperfect input.
+        </p>
+
+        <p>
+          Fix the obvious issues early: unexpected 500 errors, confusing status codes, weak validation, inconsistent responses, or payload handling that breaks under basic edge cases. Only then start writing structured automation around the behavior that should remain stable.
+        </p>
+
+        <p>
+          At that point, Karate fits naturally. You define scenarios, assertions, request flows, reusable test data, and pipeline execution. Your automation is now based on observed behavior, not just assumptions from the first successful request.
+        </p>
+
+        <h2>No competition required</h2>
+
+        <p>
+          Karate is a strong tool for API test automation. Rentgen is a focused tool for API reality checks before automation. They should not be forced into a fake comparison.
+        </p>
+
+        <p>
+          Use Karate when you know what behavior you want to verify and maintain over time. Use Rentgen when you have one working request and want to quickly find out what that request did not prove.
+        </p>
+
+        <p>
+          Karate helps you automate known API expectations. Rentgen helps you discover which expectations are worth automating. Same API lifecycle, different stage, different job.
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
