@@ -947,3 +947,275 @@ body {
     padding: 0.7rem 2rem 0.7rem 0.9rem;
   }
 }
+
+
+  
+
+
+
+    .cli-hero {
+      padding: 4.5rem 0 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cli-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(255,106,44,0.20), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(59,130,246,0.14), transparent 38%);
+      pointer-events: none;
+    }
+
+    .cli-hero-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .cli-hero h1 {
+      font-size: clamp(2.15rem, 4vw, 4.1rem);
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .cli-hero p {
+      color: var(--fg-muted);
+      font-size: 1.03rem;
+      line-height: 1.75;
+      margin: 0 0 1rem;
+      max-width: 44rem;
+    }
+
+    .cli-terminal {
+      border-radius: var(--radius-xl);
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.8rem 1rem;
+      background: rgba(15, 23, 42, 0.95);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.6);
+    }
+
+    .dot:nth-child(1) { background: #ef4444; }
+    .dot:nth-child(2) { background: #f59e0b; }
+    .dot:nth-child(3) { background: #22c55e; }
+
+    .cli-terminal pre {
+      margin: 0;
+      padding: 1.15rem;
+      overflow-x: auto;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .cli-terminal code,
+    .code-block code,
+    .inline-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .cli-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .cli-sidebar {
+      position: sticky;
+      top: 84px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      padding: 1rem;
+    }
+
+    .cli-sidebar strong {
+      display: block;
+      margin-bottom: 0.7rem;
+    }
+
+    .cli-sidebar a {
+      display: block;
+      color: var(--fg-muted);
+      text-decoration: none;
+      padding: 0.45rem 0;
+      font-size: 0.92rem;
+    }
+
+    .cli-sidebar a:hover { color: var(--accent); }
+
+    .cli-content {
+      min-width: 0;
+    }
+
+    .cli-panel {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.86);
+      border: 1px solid rgba(148, 163, 184, 0.32);
+      padding: 1.35rem;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .cli-panel h2 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(1.45rem, 2vw, 1.8rem);
+    }
+
+    .cli-panel h3 {
+      margin: 1.4rem 0 0.55rem;
+      font-size: 1.08rem;
+    }
+
+    .cli-panel p,
+    .cli-panel li {
+      color: var(--fg-muted);
+      line-height: 1.72;
+      font-size: 0.96rem;
+    }
+
+    .cli-panel p:first-of-type { margin-top: 0; }
+
+    .code-block {
+      margin: 1rem 0;
+      border-radius: 14px;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      overflow: hidden;
+    }
+
+    .code-block .code-title {
+      padding: 0.65rem 0.9rem;
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--fg-muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    }
+
+    .code-block pre {
+      margin: 0;
+      padding: 1rem;
+      overflow-x: auto;
+      color: #e5e7eb;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .cli-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.92rem;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    .cli-table th,
+    .cli-table td {
+      text-align: left;
+      padding: 0.75rem 0.8rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+      vertical-align: top;
+    }
+
+    .cli-table th {
+      color: var(--fg);
+      background: rgba(255, 106, 44, 0.10);
+      font-weight: 650;
+    }
+
+    .cli-table td {
+      color: var(--fg-muted);
+      background: rgba(2, 6, 23, 0.26);
+    }
+
+    .callout {
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 106, 44, 0.35);
+      background: rgba(255, 106, 44, 0.10);
+      color: var(--fg-muted);
+      line-height: 1.65;
+    }
+
+    .cli-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .mini-card {
+      border-radius: 16px;
+      padding: 1rem;
+      background: rgba(2, 6, 23, 0.42);
+      border: 1px solid rgba(148, 163, 184, 0.22);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: var(--fg);
+    }
+
+    .mini-card span {
+      color: var(--fg-muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.1rem 0 1.3rem;
+    }
+
+    @media (max-width: 900px) {
+      .cli-hero-inner,
+      .cli-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .cli-sidebar {
+        position: static;
+      }
+    }
+  
