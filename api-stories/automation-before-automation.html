@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Automation Before Automation (ABA) — the missing layer between exploration and test automation</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description"
+    content="Rentgen is a local-only API testing tool designed to run before Postman. Generate and run real API hygiene tests from a single cURL — no scripts, no accounts, no cloud." />
+  <link rel="canonical" href="https://rentgen.io/api-stories/automation-before-automation.html" />
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="../assets/rentgen-logo.png" />
+  <link rel="apple-touch-icon" href="../assets/rentgen-logo.png" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta property="og:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta property="og:image" content="https://rentgen.io/assets/og-image.png" />
+  <meta property="og:url" content="https://rentgen.io/" />
+  <meta property="og:type" content="website" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rentgen – Secure Local API Testing Tool" />
+  <meta name="twitter:description" content="No cloud. No tracking. No logs. Just brutal API testing on your machine." />
+  <meta name="twitter:image" content="https://rentgen.io/assets/og-image.png" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://rentgen.io/#top" class="brand">
+        <img src="../assets/rentgen-logo.png" class="brand-logo" />
+        <span class="brand-name">Rentgen</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="https://rentgen.io/#features">Features</a>
+        <a href="https://rentgen.io/#security">Security</a>
+        <a href="https://rentgen.io/#downloads">Downloads</a>
+        <a href="https://rentgen.io/#cases">Case studies</a>
+        <a href="https://rentgen.io/#github">GitHub</a>
+        <a href="https://rentgen.io/api-stories/">API Stories</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+  <article class="container article">
+    <header class="article-header">
+      <h1>Automation Before Automation (ABA) — the missing layer between exploration and test automation</h1>
+      <p class="article-meta">Rentgen · API Stories</p>
+    </header>
+      <div class="article-content">
+
+        <p>
+          Most software teams believe the testing workflow is simple. A developer implements a feature, someone explores it, automated tests are written, CI/CD executes them, and the software is released.
+        </p>
+
+        <p>
+          Reality is usually different.
+        </p>
+
+        <p>
+          Before teams invest time building maintainable automated test suites, they almost always spend time trying to understand how the system behaves. They modify inputs, test boundaries, send invalid values, experiment with protocols, trigger error conditions, and intentionally attempt to break things.
+        </p>
+
+        <p>
+          Increasingly, these activities are not performed manually. They are assisted by fuzzers, mutation engines, schema-driven generators, AI-assisted tooling, and automated exploratory systems capable of generating hundreds or thousands of test variations in minutes.
+        </p>
+
+        <p>
+          Yet this phase has never had a widely accepted name.
+        </p>
+
+        <p>
+          It is usually called exploratory testing. Sometimes it is called automation. Occasionally it is called fuzzing. In practice, it is something that sits between all of them.
+        </p>
+
+        <h2>The phase nobody talks about</h2>
+
+        <p>
+          Imagine a developer creates a new API endpoint.
+        </p>
+
+        <p>
+          A single request returns 200 OK. The JSON looks correct. The implementation appears complete.
+        </p>
+
+        <p>
+          At this point most teams do not immediately start building large regression suites. First they try to understand what they have actually built.
+        </p>
+
+        <p>
+          What happens if a required field disappears?
+        </p>
+
+        <p>
+          What happens if a number becomes a string?
+        </p>
+
+        <p>
+          What happens when a payload becomes too large?
+        </p>
+
+        <p>
+          What happens if authorization is missing, malformed, expired, duplicated, or inconsistent?
+        </p>
+
+        <p>
+          These questions are exploratory by nature. But increasingly they are answered through automation.
+        </p>
+
+        <p>
+          This is the gap that Automation Before Automation (ABA) attempts to describe.
+        </p>
+
+        <h2>What is ABA?</h2>
+
+        <p>
+          Automation Before Automation (ABA) is the practice of automatically generating and executing exploratory, validation, robustness, and protocol-level tests before creating and maintaining traditional automated test suites.
+        </p>
+
+        <p>
+          In simpler terms:
+        </p>
+
+        <p>
+          ABA is automated exploration before automated verification.
+        </p>
+
+        <p>
+          The goal is not regression protection.
+        </p>
+
+        <p>
+          The goal is discovery.
+        </p>
+
+        <p>
+          ABA attempts to answer a different question:
+        </p>
+
+        <p>
+          What should we automate?
+        </p>
+
+        <p>
+          Traditional automation answers:
+        </p>
+
+        <p>
+          How do we continuously verify it?
+        </p>
+
+        <h2>Where Rentgen fits</h2>
+
+        <p>
+          Rentgen was built around exactly this phase.
+        </p>
+
+        <p>
+          It starts with a single working cURL request and automatically generates variations designed to expose validation weaknesses, inconsistent behavior, robustness issues, protocol problems, and unexpected responses.
+        </p>
+
+        <p>
+          Rentgen is not trying to replace automated test frameworks.
+        </p>
+
+        <p>
+          It is not trying to replace CI/CD pipelines.
+        </p>
+
+        <p>
+          It is not trying to replace long-term regression suites.
+        </p>
+
+        <p>
+          Instead, it helps teams understand how an API behaves before they invest time building and maintaining automation around assumptions that may never have been challenged.
+        </p>
+
+        <p>
+          Some generated scenarios will reveal nothing.
+        </p>
+
+        <p>
+          Good.
+        </p>
+
+        <p>
+          Some will expose ugly implementation details that would otherwise reach production.
+        </p>
+
+        <p>
+          Better.
+        </p>
+
+        <h2>Why this matters</h2>
+
+        <p>
+          The software industry spends enormous effort discussing exploratory testing and automated testing as if they are the only two phases that matter.
+        </p>
+
+        <p>
+          But modern tooling increasingly creates a third layer.
+        </p>
+
+        <p>
+          A layer where exploration is automated.
+        </p>
+
+        <p>
+          A layer where hundreds of scenarios can be generated before a single maintainable test case exists.
+        </p>
+
+        <p>
+          A layer where teams learn what is fragile, what is robust, and what deserves long-term automation investment.
+        </p>
+
+        <p>
+          Whether the industry ultimately adopts the term or not, the activity already exists.
+        </p>
+
+        <p>
+          Most modern teams are doing it.
+        </p>
+
+        <p>
+          They just do not have a name for it yet.
+        </p>
+
+        <h2>Learn more</h2>
+
+        <p>
+          The full ABA whitepaper introduces the concept, defines its characteristics, compares it to traditional automation, discusses associated tooling categories, and presents a real-world case study.
+        </p>
+
+        <p>
+          Read the complete paper:
+        </p>
+
+        <p>
+          <a href="https://qaontime.com/research/automation-before-automation.html" target="_blank">
+            Automation Before Automation (ABA): An Intermediate Phase in Modern Software Testing
+          </a>
+        </p>
+
+      </div>
+  </article>
+</main>
+
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Rentgen</span>
+      <span class="footer-note">Built for testers, by a tester.</span>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
